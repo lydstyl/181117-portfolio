@@ -1,19 +1,12 @@
-// const express = require('express')
-// let router = express.Router()
-
-// // Params property on the request object
-// // localhost:3000/person/thomas
-// router.get('/page/:number', (req, res) =>{
-//     res.send(`You have requested the page number ${req.params.name}`)
-// })
-
-
 var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', function (req, res) {
+  res.render('index', { title: 'Hey', message: 'Hello there!' })
+})
 
+router.get('/page/:nb', (req, res) =>{
+  res.render('index', { message: `You have requested page ${req.params.nb}` })
+})
 module.exports = router;
