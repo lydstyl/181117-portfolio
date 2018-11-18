@@ -1,10 +1,9 @@
-var cookieSession = require('cookie-session')
-
+const cookieSession = require('cookie-session')
 const express = require('express')
 const path = require('path');
 const indexRouter = require('./routes/index');
 
-var bodyParser = require('body-parser')
+// var bodyParser = require('body-parser')
 
 let app = express();
 
@@ -21,8 +20,7 @@ app.use(function(req,res,next){
   next();
 });
 
-// app.use(express.json());
-app.use( bodyParser() );
+app.use(express.urlencoded({extended: true}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
