@@ -5,6 +5,8 @@ html
     //- title Portfolio Gabriel Brun
     //- link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    div
+      p User: #{session.admin}
     nav 
       ul
         li
@@ -13,4 +15,6 @@ html
           a(class='button' href='/') Home
         li
           a(class='button' href='page2') Page 2
+        li
+          a(href='/logout') Logout
     block content
