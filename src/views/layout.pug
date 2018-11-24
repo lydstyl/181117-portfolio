@@ -5,16 +5,19 @@ html
     //- title Portfolio Gabriel Brun
     //- link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    div
-      p User: #{session.admin}
+    //div
+      if session.admin
+        p User: #{session.admin}
     nav 
       ul
-        li
-          a(class='button' href='admin') Admin
         li
           a(class='button' href='/') Home
         li
           a(class='button' href='page2') Page 2
-        li
-          a(href='/logout') Logout
+        if session.admin
+          li
+            a(href='/logout') Logout
+        else
+          li
+            a(class='button' href='admin') Admin
     block content
