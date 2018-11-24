@@ -1,8 +1,16 @@
 extends layout
 
 block content
-  h1 Add or create
-  form(action='add' method='post')
-    label(for='name') Name:
-    input(type='text' id='name' name='name' required)
-    input(type='submit' value='go')
+  if file
+    h1 Edit or update #{file.id} // #{file.name}
+    form(action='/form/update' method='post')
+      input(type='hidden' id='id' name='id' value=file.id)
+      label(for='name') Name:
+      input(type='text' id='name' name='name' value=file.name required)
+      input(type='submit' value='go')
+  else
+    h1 Add or create
+    form(action='add' method='post')
+      label(for='name') Name:
+      input(type='text' id='name' name='name' required)
+      input(type='submit' value='go')

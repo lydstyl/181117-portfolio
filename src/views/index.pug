@@ -10,4 +10,6 @@ block content
         li
           div= index + ': ' + post.name
           if session.admin
+            a(href="form/edit/" + post.id) Editer le post
+            br
             a(href="form/del/" + post.id) Supprimer le post

@@ -42,7 +42,26 @@ router.post('/add', (req, res) =>{
 
 // R in home page ...
 
+
 // U
+
+router.post('/update', (req, res) =>{
+    
+    console.log('EDIT POST' + req.body.name);
+
+
+    res.redirect('/'); 
+})
+router.get('/edit/:id', (req, res) =>{
+    
+    let file = fs.readFileSync( path.dirname(require.main.filename) + '/data/' + req.params.id + '.json', 'utf8' );
+    file = JSON.parse(file)
+    
+    console.log(`Edit ${req.params.id}`);
+    console.log(file);
+
+    res.render('add', { title: 'Portfolio admin', file: file })
+})
 
 // D
 router.get('/del/:id', (req, res) =>{
