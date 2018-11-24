@@ -7,4 +7,7 @@ block content
   if posts
     ul
       each post, index in posts
-        li= index + ': ' + post.name
+        li
+          div= index + ': ' + post.name
+          if session.admin
+            a(href="form/del/" + post.id) Supprimer le post

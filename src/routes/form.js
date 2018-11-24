@@ -40,11 +40,15 @@ router.post('/add', (req, res) =>{
 
 })
 
-// R
+// R in home page ...
 
 // U
 
 // D
+router.get('/del/:id', (req, res) =>{
+    fs.unlinkSync( path.dirname(require.main.filename) + '/data/' + req.params.id + '.json' );
+    res.redirect('/'); 
+})
 
 
 module.exports = router;
