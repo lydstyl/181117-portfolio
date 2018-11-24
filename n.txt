@@ -1,8 +1,6 @@
 crud uniquement liste de noms
-    create add ok but have tu add this in a file with fs for now 
-    read
-    update
     delete
+    update
 
 sauvegarde en json
 
