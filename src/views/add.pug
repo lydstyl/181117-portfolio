@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 Add or create
+  form(action='add' method='post')
+    label(for='name') Name:
+    input(type='text' id='name' name='name' required)
+    input(type='submit' value='go')

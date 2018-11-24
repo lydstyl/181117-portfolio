@@ -2,6 +2,7 @@ const cookieSession = require('cookie-session')
 const express = require('express')
 const path = require('path');
 const indexRouter = require('./routes/index');
+const form = require('./routes/form');
 
 // var bodyParser = require('body-parser')
 
@@ -27,6 +28,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use('/', indexRouter);
+app.use('/form', form);
 
 app.listen(3000, () => {
   console.log('Listening on port 3000! --> http://localhost:3000/')

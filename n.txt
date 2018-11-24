@@ -1,6 +1,8 @@
-pug affichage minimal avec condition si admin logout s'affiche sinon admin s'affiche
-
 crud uniquement liste de noms
+    create add ok but have tu add this in a file with fs for now 
+    read
+    update
+    delete
 
 sauvegarde en json
 
