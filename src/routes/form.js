@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 const fs = require('fs');
 const path = require('path');
 const uniqid = require('uniqid');
@@ -15,9 +14,6 @@ router.get('/add', (req, res) =>{
 
 // C
 router.post('/add', (req, res) =>{
-
-    // write json for 1 name or one post
-    //req.session.test = 'add ' + req.body.name;
     const id = uniqid();
     const filePath = path.dirname(require.main.filename) + '/data/' + id + '.json';
     let json = {
@@ -44,22 +40,31 @@ router.post('/add', (req, res) =>{
 
 
 // U
-
 router.post('/update', (req, res) =>{
+    const filePath = path.dirname(require.main.filename) + '/data/' + req.body.id + '.json';
+    let json = {
+        id: req.body.id,
+        filePath: filePath,
+        name: req.body.name,
+        description: 'my description',
+        imgsrc: 'my/src/img'
+    }
+    json = JSON.stringify(json, '', 3);
     
-    console.log('EDIT POST' + req.body.name);
-
+    fs.writeFileSync(filePath, json, function(err) {
+        if(err) {
+            return console.log(err);
+        }
+        console.log("The file was saved!");
+    }); 
 
     res.redirect('/'); 
 })
+
 router.get('/edit/:id', (req, res) =>{
     
     let file = fs.readFileSync( path.dirname(require.main.filename) + '/data/' + req.params.id + '.json', 'utf8' );
     file = JSON.parse(file)
-    
-    console.log(`Edit ${req.params.id}`);
-    console.log(file);
-
     res.render('add', { title: 'Portfolio admin', file: file })
 })
 
@@ -68,6 +73,5 @@ router.get('/del/:id', (req, res) =>{
     fs.unlinkSync( path.dirname(require.main.filename) + '/data/' + req.params.id + '.json' );
     res.redirect('/'); 
 })
-
 
 module.exports = router;

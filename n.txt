@@ -1,13 +1,10 @@
 crud uniquement liste de noms
-    delete
-    update
-
-sauvegarde en json
-
-style + bootstrap + sass
+    update / edit
 
 gestion de la pagination
 
-remplacer json par firebase ou mongodb
+hash du pass
 
-hash du pass ?
+style + bootstrap + sass
+
+remplacer json par firebase ou mongodb
