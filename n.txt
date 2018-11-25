@@ -1,7 +1,5 @@
 gestion de la pagination
 
-hash du pass
-
 style + bootstrap + sass
 
 remplacer json par firebase ou mongodb
