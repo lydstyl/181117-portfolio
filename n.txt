@@ -1,7 +1,9 @@
-gestion de la pagination à finir
-    https://stackoverflow.com/questions/7042340/error-cant-set-headers-after-they-are-sent-to-the-client
+ajouter dans le formulaire admin
+    image
+    paragraphe
+    lien
 
-style + bootstrap + sass
+régler le pb de data --> /home/gabriel/181... /home/autre/181...
 
 remplacer json par firebase ou mongodb
 
