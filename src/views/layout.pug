@@ -4,18 +4,19 @@ html
     title= title
     link(rel='stylesheet', href='/css/style.css')
   body
-    header
-      //- img(src="/img/portfolio.gif", alt="portfolio")
-      nav 
-        ul
-          li
-            a(class='button' href='/') Home
-          if session.admin
+    .container
+      header
+        //- img(src="/img/portfolio.gif", alt="portfolio")
+        nav 
+          ul
             li
-              a(href='/form/add') Add
-            li
-              a(href='/logout') Logout
-          else
-            li
-              a(class='button' href='admin') Admin
-    block content
+              a(class='button' href='/') Home
+            if session.admin
+              li
+                a(href='/form/add') Add
+              li
+                a(href='/logout') Logout
+            else
+              li
+                a(class='button' href='admin') Admin
+      block content
