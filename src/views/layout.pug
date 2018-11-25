@@ -2,19 +2,20 @@ doctype html
 html
   head
     title= title
-    //- title Portfolio Gabriel Brun
-    //- link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/css/style.css')
   body
-    nav 
-      ul
-        li
-          a(class='button' href='/') Home
-        if session.admin
+    header
+      //- img(src="/img/portfolio.gif", alt="portfolio")
+      nav 
+        ul
           li
-            a(href='/form/add') Add
-          li
-            a(href='/logout') Logout
-        else
-          li
-            a(class='button' href='admin') Admin
+            a(class='button' href='/') Home
+          if session.admin
+            li
+              a(href='/form/add') Add
+            li
+              a(href='/logout') Logout
+          else
+            li
+              a(class='button' href='admin') Admin
     block content

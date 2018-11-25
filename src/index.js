@@ -3,6 +3,7 @@ const express = require('express')
 const path = require('path');
 const indexRouter = require('./routes/index');
 const form = require('./routes/form');
+const sassMiddleware = require('node-sass-middleware');
 
 let app = express();
 
@@ -25,9 +26,23 @@ app.use(express.urlencoded({extended: true}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(sassMiddleware({
+  /* Options */
+  src: path.join(__dirname, 'sass'),
+  dest: path.join(__dirname, '../public/css'),
+  indentedSyntax: true, // true = .sass and false = .scss
+  debug: true,
+  outputStyle: 'compressed',
+  prefix:  '/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
+}));
+// Note: you must place sass-middleware *before* `express.static` or else it will
+// not work.
+app.use( express.static( path.join(__dirname, '../public') ) );
+
 app.use('/', indexRouter);
 app.use('/form', form);
 
-app.listen(3000, () => {
-  console.log('Listening on port 3000! --> http://localhost:3000/')
+const port = 3001;
+app.listen(port, () => {
+  console.log('Listening on port ' + port + '! --> http://localhost:' + port + '/')
 })
