@@ -5,18 +5,60 @@ block content
   if posts
     ul
       each post, index in posts
-        li
-          div= index + ': ' + post.name
-          if session.admin
-            a(href="form/edit/" + post.id) Editer le post
-            br
-            a(href="form/del/" + post.id) Supprimer le post
-    h2 Pagination: #{pageNb} page(s)
-      - var n = 0;
-      ul
+        if index % 3 == 0
+          .row
+            if posts[index + 0]
+              - var item = posts[index + 0]
+              .col-md-4.portfolio-item
+                a(target='_blank' href='./JAVASCRIPT/2016-12-09_plug-ins_jQuery/index.html')
+                  img.img-responsive(src='https://lydstyl.github.io/CV_WEB_DEV/portfolio/img/html.jpg' alt='une_image')
+                h3
+                  a(target='_blank' href='./JAVASCRIPT/2016-12-09_plug-ins_jQuery/index.html') #{item.name}
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc egestas purus ligula, eu scelerisque augue viverra a amet.
+                if session.admin
+                  p
+                    a(href="form/edit/" + item.id) Editer le post
+                    br
+                    a(href="form/del/" + item.id) Supprimer le post
+
+            if posts[index + 1]
+              - var item = posts[index + 1]
+              .col-md-4.portfolio-item
+                a(target='_blank' href='./JAVASCRIPT/2016-12-09_plug-ins_jQuery/index.html')
+                  img.img-responsive(src='https://lydstyl.github.io/CV_WEB_DEV/portfolio/img/html.jpg' alt='une_image')
+                h3
+                  a(target='_blank' href='./JAVASCRIPT/2016-12-09_plug-ins_jQuery/index.html') #{item.name}
+                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc egestas purus ligula, eu scelerisque augue viverra a amet.
+                if session.admin
+                  p
+                    a(href="form/edit/" + item.id) Editer le post
+                    br
+                    a(href="form/del/" + item.id) Supprimer le post
+
+            if posts[index + 2]
+              - var item = posts[index + 2]
+              .col-md-4.portfolio-item
+                a(target='_blank' href='./JAVASCRIPT/2016-12-09_plug-ins_jQuery/index.html')
+                  img.img-responsive(src='https://lydstyl.github.io/CV_WEB_DEV/portfolio/img/html.jpg' alt='une_image')
+                h3
+                  a(target='_blank' href='./JAVASCRIPT/2016-12-09_plug-ins_jQuery/index.html') #{item.name}
+                p
+                  | Je sais ajouter un plugin Jquery comme par exemple un carroussel, des popups, etc. Je sais aussi le customiser si besoin.
+                if session.admin
+                  p
+                    a(href="form/edit/" + item.id) Editer le post
+                    br
+                    a(href="form/del/" + item.id) Supprimer le post
+
+
+    //h2 Pagination: #{pageNb} page(s)
+    - var n = 0;
+    nav
+      ul.justify-content-center.pagination.pagination-lg
         while n < pageNb
           - n++
-          li
-            a( href="page" + n ) Page #{n}
+          li.page-item
+            a.page-link( href="page" + n ) #{n}
   else
     p Sorry boby mais on dirait bien qu'il n'y a pas de post
