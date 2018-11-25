@@ -4,20 +4,68 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 
-router.get('/', (req, res) => {
-  const testFolder = path.dirname(require.main.filename) + '/data/';
-  let files = fs.readdirSync( testFolder );
+function getPagesNumber(items, pageIems) {
+  let tmp = items / pageIems;
+  tmp = tmp.toString().split('.');
+  let pages = tmp[0];
+  if (tmp[1] > 0) {
+      pages ++;
+  }
+  return pages;
+}
+function getFilesForPage( itemsByPage, pageNumber ) {
+  const dataFolder = path.dirname(require.main.filename) + '/data/';
+  let files = fs.readdirSync( dataFolder );
+  
+  const pageNb = getPagesNumber(files.length, 9);
+
+  let index1 = (pageNumber - 1) * itemsByPage;
+  let index2 = index1 + itemsByPage;
+  files = files.slice(index1, index2);
+
+  let filesAndPageNb = {
+    files: files,
+    pageNb: pageNb
+  }
+  return filesAndPageNb
+}
+function getPosts(req) {
+  let PageNum = 1;
+  if (req.params.nb) {
+    PageNum = req.params.nb;
+  }
+  let filesAndPageNb = getFilesForPage( 9, PageNum )
+  let files = filesAndPageNb.files
   let posts = [];
   for (let i in files) {
     let file = files[i];
     file = fs.readFileSync( path.dirname(require.main.filename) + '/data/' + file, 'utf8' );
     posts.push( JSON.parse(file) )
   }
-  res.render('index', { title: 'Portfolio Gabriel Brun', message: 'Bienvenu sur mon portfolio!', posts: posts })
+
+  // return posts;
+  let postsAndPageNb = {
+    posts: posts,
+    pageNb: filesAndPageNb.pageNb
+  }
+  return postsAndPageNb
+}
+
+router.get('/', (req, res) => {
+  let postsAndPageNb = getPosts(req);
+  res.render('index', { title: 'Portfolio Gabriel Brun', message: 'Bienvenu sur mon portfolio!', posts: postsAndPageNb.posts, pageNb: postsAndPageNb.pageNb })
 })
 
 router.get('/page:nb', (req, res) =>{
-  res.render('index', { title: 'Portfolio Gabriel Brun', message: `Tu as demandé la page ${req.params.nb}` })
+  if (req.params.nb == 1) {
+    res.redirect('/') // TODO Cannot set headers after they are sent to the client
+  }
+  let postsAndPageNb = getPosts(req);
+  if (!postsAndPageNb.posts.length) {
+    res.redirect('/') // TODO Cannot set headers after they are sent to the client
+  }else{
+    res.render('index', { title: 'Portfolio Gabriel Brun', message: `Tu as demandé la page ${req.params.nb}`, posts: postsAndPageNb.posts, pageNb: postsAndPageNb.pageNb })
+  }
 })
 
 router.get('/admin', (req, res) =>{

@@ -1,4 +1,4 @@
-gestion de la pagination
+gestion de la pagination à finir
 
 style + bootstrap + sass
 

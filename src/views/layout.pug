@@ -5,15 +5,10 @@ html
     //- title Portfolio Gabriel Brun
     //- link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    //div
-      if session.admin
-        p User: #{session.admin}
     nav 
       ul
         li
           a(class='button' href='/') Home
-        li
-          a(class='button' href='page2') Page 2
         if session.admin
           li
             a(href='/form/add') Add

@@ -11,3 +11,10 @@ block content
             a(href="form/edit/" + post.id) Editer le post
             br
             a(href="form/del/" + post.id) Supprimer le post
+    h2 Pagination: #{pageNb} page(s)
+      - var n = 0;
+      ul
+        while n < pageNb
+          - n++
+          li
+            a( href="page" + n ) Page #{n}

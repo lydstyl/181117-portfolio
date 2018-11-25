@@ -4,8 +4,6 @@ const path = require('path');
 const indexRouter = require('./routes/index');
 const form = require('./routes/form');
 
-// var bodyParser = require('body-parser')
-
 let app = express();
 
 app.use(cookieSession({
