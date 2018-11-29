@@ -1,3 +1,7 @@
+fonctionne sous windows avec node v10.13.0
+    var isWin = process.platform === "win32";
+    todo    "filePath": "C:\\Users\\gbrun\\Downloads\\181117-portfolio\\src/data/1zx75rwa7bjowv6n7i.json",
+
 ajouter dans le formulaire admin
     image
     paragraphe
