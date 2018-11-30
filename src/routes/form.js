@@ -15,10 +15,10 @@ router.get('/add', (req, res) =>{
 // C
 router.post('/add', (req, res) =>{
     const id = uniqid();
-    const filePath = path.dirname(require.main.filename) + '/data/' + id + '.json';
+    const filePath = path.join( path.dirname(require.main.filename), 'data', id + '.json' );
     let json = {
         id: id,
-        filePath: filePath,
+        filePath: path.normalize( filePath ),
         name: req.body.name,
         description: 'my description',
         imgsrc: 'my/src/img'
