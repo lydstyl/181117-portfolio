@@ -19,11 +19,7 @@ function getFiles() {
 
 function getFilesForPage( itemsByPage, pageNumber ) {
     let files = getFiles()
-    
-    console.log(files);
     files = descendingSort(files)
-    console.log(files);
-
     const pageNb = getPagesNumber(files.length, 9);
 
     let index1 = (pageNumber - 1) * itemsByPage;

@@ -1,27 +1,49 @@
-ajouter la position dans le nom de fichier puis limiter la date à l'année et au mois 4 chiffres
-
-trier par position puis date inversé
-
-refacto 
+vérifier fonctionnement windows var isWin = process.platform === "win32";
 
 ajouter dans le formulaire admin
     image
-    paragraphe
-    lien
+        src
+        upload
+    description
+        limiter le nb de mot
+    lien avec page
+        avec toute la description et bien aéré + lien du projet s'il y en a
 
-régler le pb de data --> /home/gabriel/181... /home/autre/181...
+footer à compléter
 
-remplacer json par firebase ou mongodb
+menu header à revoir avec au moins une liste déroulante et voir le résultat mobile
+
+touche final CSS
 
 mise en production ?
 
-SEO
-
-analytique
+SEO 20% le plus important
 
 demander email à la connexion + vérification adresse ?
 
-fonctionne sous windows avec node v10.13.0
-    var isWin = process.platform === "win32";
-    todo    "filePath": "C:\\Users\\gbrun\\Downloads\\181117-portfolio\\src/data/1zx75rwa7bjowv6n7i.json",
-        https://shapeshed.com/writing-cross-platform-node/
+analytique
+
+gestion des positions dans une nouvelle page on liste les position avant et après puis au bouton go
+    SOLUTION MIEUX
+        a chaque fois qu'on affiche une page on se base sur le tableau dans positions.json s'il existe sinon on continu comme maintenant
+        a chaque ajout d'un poste
+            s'il existe pas
+                créer un fichier positions.json et mettre le poste dedan
+            sinon
+                le mettre à jour et mettant le nouveau poste à la fin
+        a chaque changemnt de position via fleche haut ou bas de la page positions puis clique sur go
+            reconstruire le positions.json
+    SOLUTION INITIALE MOINS BIEN POUR CE CAS MAIS GÉNIAL COMME OUTIL SUR UN OS
+        mise en mémoire des tableaux ex avant
+            0-1812-one.json   1-1812-2.json   2-1812-three.json   3-1812-4.json
+        après
+            1 4 3 2
+        si tous les id du deuxième tableau sont uniques alors pour chaque el
+            s'il à changé d'index alors trouver le remplacé ex pour le 4 qui devient 2 :  
+                    1-1812-2.json --> tmp
+                    3-1812-4.json --> 1-1812-4.json
+                    tmp --> 3-1812-2.json
+            sinon
+                on le laisse
+
+remplacer json par firebase ou mongodb
