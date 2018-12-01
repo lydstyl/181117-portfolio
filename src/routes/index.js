@@ -53,7 +53,12 @@ function getPosts(req) {
 
 router.get('/', (req, res) => {
   let postsAndPageNb = getPosts(req);
-  res.render('index', { title: 'Portfolio Gabriel Brun', message: 'Bienvenu sur mon portfolio!', posts: postsAndPageNb.posts, pageNb: postsAndPageNb.pageNb })
+  res.render('index', { 
+    title: 'Portfolio Gabriel Brun', 
+    message: 'Bienvenu sur mon portfolio!', 
+    posts: postsAndPageNb.posts, 
+    pageNb: postsAndPageNb.pageNb 
+  })
 })
 
 router.get('/page:nb', (req, res) =>{

@@ -1,8 +1,7 @@
-fonctionne sous windows avec node v10.13.0
-    var isWin = process.platform === "win32";
-    todo    "filePath": "C:\\Users\\gbrun\\Downloads\\181117-portfolio\\src/data/1zx75rwa7bjowv6n7i.json",
-        https://shapeshed.com/writing-cross-platform-node/
-        
+ajouter date dans le formulaire et trier par date les posts
+
+refacto 
+
 ajouter dans le formulaire admin
     image
     paragraphe
@@ -19,3 +18,8 @@ SEO
 analytique
 
 demander email à la connexion + vérification adresse ?
+
+fonctionne sous windows avec node v10.13.0
+    var isWin = process.platform === "win32";
+    todo    "filePath": "C:\\Users\\gbrun\\Downloads\\181117-portfolio\\src/data/1zx75rwa7bjowv6n7i.json",
+        https://shapeshed.com/writing-cross-platform-node/
