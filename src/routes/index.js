@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const getPosts = require('../model/model-post')
+const getPosts = require('../model/model-post').getPosts
 
 router.get('/', (req, res) => {
   let postsAndPageNb = getPosts(req);

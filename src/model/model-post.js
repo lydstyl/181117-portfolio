@@ -12,9 +12,13 @@ function getPagesNumber(items, pageIems) {
     return pages;
 }
 
-function getFilesForPage( itemsByPage, pageNumber ) {
+function getFiles() {
     const dataFolder = path.join( path.dirname(require.main.filename), 'data');
-    let files = fs.readdirSync( dataFolder );
+    return fs.readdirSync( dataFolder );
+}
+
+function getFilesForPage( itemsByPage, pageNumber ) {
+    let files = getFiles()
     
     console.log(files);
     files = descendingSort(files)
@@ -43,7 +47,7 @@ function getPosts(req) {
     let posts = [];
     for (let i in files) {
         let file = files[i];
-        file = fs.readFileSync( path.dirname(require.main.filename) + '/data/' + file, 'utf8' );
+        file = fs.readFileSync( path.dirname(require.main.filename) + '/data/' + file, 'utf8' ); // todo join
         posts.push( JSON.parse(file) )
     }
 
@@ -55,4 +59,7 @@ function getPosts(req) {
     return postsAndPageNb
 }
 
-module.exports = getPosts
+module.exports = {
+    getPosts: getPosts,
+    getFiles: getFiles
+}

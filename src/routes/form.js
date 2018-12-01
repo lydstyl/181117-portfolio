@@ -3,6 +3,7 @@ const router = express.Router();
 const fs = require('fs');
 const path = require('path');
 const DateId = require('../helper/maintenant.js');
+const getFiles = require('../model/model-post')
 
 router.get('/add', (req, res) =>{
     if (req.session.admin == 'admin') {
@@ -16,18 +17,18 @@ router.get('/add', (req, res) =>{
 router.post('/add', (req, res) =>{
     const date = new Date()
     const dateId = new DateId( date )
-    let id = dateId.name + '-' + req.body.name.substring(0, 9)
+    let position = getFiles.getFiles().length
+    let id = position  + '-' + dateId.name + '-' + req.body.name.substring(0, 9)
     let filePath = path.join( path.dirname(require.main.filename), 'data', id + '.json' );
     if (fs.existsSync(filePath)) {
-        id = path.basename( filePath ) 
-        id = id.split('.')
-        id = id[0] + '_bis'
+        position ++;
+        id = position  + '-' + dateId.name + '-' + req.body.name.substring(0, 9)
         filePath = path.join( path.dirname(require.main.filename), 'data', id + '.json' );
     }
     let json = {
-        //id: id,
+        id: id,
+        position: position,
         postCreationDate: date,
-        //filePath: path.normalize( filePath ),
         name: req.body.name,
         description: 'my description',
         imgsrc: 'my/src/img' // https://lydstyl.github.io/CV_WEB_DEV/portfolio/img/html.jpg
