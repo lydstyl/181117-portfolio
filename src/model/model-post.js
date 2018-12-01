@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const descendingSort = require('../helper/descending-sort.js')
 
 function getPagesNumber(items, pageIems) {
     let tmp = items / pageIems;
@@ -12,8 +13,12 @@ function getPagesNumber(items, pageIems) {
 }
 
 function getFilesForPage( itemsByPage, pageNumber ) {
-    const dataFolder = path.dirname(require.main.filename) + '/data/';
+    const dataFolder = path.join( path.dirname(require.main.filename), 'data');
     let files = fs.readdirSync( dataFolder );
+    
+    console.log(files);
+    files = descendingSort(files)
+    console.log(files);
 
     const pageNb = getPagesNumber(files.length, 9);
 

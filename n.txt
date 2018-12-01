@@ -1,4 +1,6 @@
-ajouter date dans le formulaire et trier par date les posts
+ajouter la position dans le nom de fichier puis limiter la date à l'année et au mois 4 chiffres
+
+trier par position puis date inversé
 
 refacto 
 

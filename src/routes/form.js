@@ -25,12 +25,12 @@ router.post('/add', (req, res) =>{
         filePath = path.join( path.dirname(require.main.filename), 'data', id + '.json' );
     }
     let json = {
-        id: id,
-        date: date,
-        filePath: path.normalize( filePath ),
+        //id: id,
+        postCreationDate: date,
+        //filePath: path.normalize( filePath ),
         name: req.body.name,
         description: 'my description',
-        imgsrc: 'my/src/img'
+        imgsrc: 'my/src/img' // https://lydstyl.github.io/CV_WEB_DEV/portfolio/img/html.jpg
     }
     json = JSON.stringify(json, '', 3);
     fs.writeFileSync(filePath, json, function(err) {
