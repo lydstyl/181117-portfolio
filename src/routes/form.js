@@ -55,10 +55,11 @@ router.post('/add', (req, res) =>{
 // U
 
 router.post('/updateimg', upload.single('myimage'), (req, res, next) => {
-    // req.file is the `avatar` file
+    // req.file is the `myimage` file
     // req.body will hold the text fields, if there were any
     const filename1 = uploadDir + '/' + req.file.filename;
-    const filename2 = filename1 + '.jpg';
+    const filename2 = uploadDir + '/' + req.body.id + '.jpg';
+    // todo redim image ici
     fs.rename(filename1, filename2, (err) => {
         if (err) throw err;
         console.log('renamed complete');

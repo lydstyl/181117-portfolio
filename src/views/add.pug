@@ -10,6 +10,7 @@ block content
       input(type='submit' value='go')
     form(action='/form/updateimg' method='post' enctype='multipart/form-data')
       //label(for='myimage') myimg:
+      input(type='hidden' name='id' value=file.id)
       input(type='file' name='myimage')
       input(type='submit' name='submit' value='submit')
   else
