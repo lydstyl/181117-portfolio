@@ -10,7 +10,11 @@ block content
       input(type='submit' value='go')
   else
     h1 Add or create
-    form(action='add' method='post')
-      label(for='name') Name:
-      input(type='text' id='name' name='name' required)
+    form(action='add' method='post' enctype='multipart/form-data')
+      div
+        label(for='name') Name:
+        input(type='text' id='name' name='name' required)
+      div
+        label(for='myimg') Mon image:
+        input(type='file' name='myimg')
       input(type='submit' value='go')
