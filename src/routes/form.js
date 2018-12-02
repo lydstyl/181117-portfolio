@@ -4,6 +4,10 @@ const fs = require('fs');
 const path = require('path');
 const DateId = require('../helper/maintenant.js');
 const getFiles = require('../model/model-post')
+const multer = require('multer');
+
+const uploadDir = './public/img/upload';
+const upload = multer({ dest: uploadDir })
 
 router.get('/add', (req, res) =>{
     if (req.session.admin == 'admin') {
@@ -49,6 +53,19 @@ router.post('/add', (req, res) =>{
 
 
 // U
+
+router.post('/updateimg', upload.single('myimage'), (req, res, next) => {
+    // req.file is the `avatar` file
+    // req.body will hold the text fields, if there were any
+    const filename1 = uploadDir + '/' + req.file.filename;
+    const filename2 = filename1 + '.jpg';
+    fs.rename(filename1, filename2, (err) => {
+        if (err) throw err;
+        console.log('renamed complete');
+    });
+    res.redirect('/');
+})
+
 router.post('/update', (req, res) =>{
     const filePath = path.dirname(require.main.filename) + '/data/' + req.body.id + '.json';
     let json = {
