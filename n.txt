@@ -1,5 +1,7 @@
 vérifier fonctionnement windows var isWin = process.platform === "win32";
 
+revoir le descending-sort
+
 ajouter dans le formulaire admin
     image
         src
