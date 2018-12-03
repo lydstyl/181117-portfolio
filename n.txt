@@ -1,5 +1,6 @@
 ajouter dans le formulaire admin
     description
+        limiter image à 75 ko max en js front
         limiter le nb de mot
     lien avec page
         avec toute la description et bien aéré + lien du projet s'il y en a

@@ -1,7 +1,7 @@
 
 if (document.querySelector('[type=file]')) {
 
-    //let go = document.querySelector('[value=go]')
+    let go = document.querySelector('[value=go]')
 
     let result = document.getElementById("result")
     document.addEventListener("DOMContentLoaded", ()=>{
@@ -13,6 +13,7 @@ if (document.querySelector('[type=file]')) {
             request.onreadystatechange = function(){
                 if (request.readyState != 4) {
                     result.classList.remove("d-none")
+                    go.click();
                 }
                 else{
                     result.classList.add("d-none")

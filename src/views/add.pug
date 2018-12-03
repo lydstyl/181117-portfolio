@@ -7,11 +7,12 @@ block content
       input(type='hidden' id='id' name='id' value=file.id)
       label(for='name') Name:
       input(type='text' id='name' name='name' value=file.name required)
-      input(type='submit' value='go')
+      input.d-none(type='submit' value='go')
     form#ajax-upload(action='/form/updateimg' method='post' enctype='multipart/form-data')
-      //label(for='myimage') myimg:
+      label(for='myimage') Image:
       input(type='hidden' name='id' value=file.id)
       input(type='file' name='myimage')
+      br
       input(type='submit' name='submit' value='submit')
     div#result.d-none
       img(src="https://surroundedbyflowers.com/wp-content/themes/opalmine/img/spinner.gif", alt="spinner")
