@@ -6,7 +6,7 @@ const resizeImg = require('resize-img');
 
 const DateId = require('../helper/maintenant.js');
 const getFiles = require('../model/model-post')
-const uploadDir = './public/img/upload';
+const uploadDir = './public/img';
 
 const router = express.Router();
 const upload = multer({ dest: uploadDir })
@@ -71,15 +71,18 @@ router.post('/updateimg', upload.single('myimage'), (req, res, next) => {
         console.log('renamed complete');
     });
     
-    const upDir = '../public/img/upload/'
     const imgDir = '../public/img/'
     const lastJustFileName = req.body.id + '-sm.' + ext
-    file1 = path.join( path.dirname(require.main.filename), upDir, justFilname2 );
+    file1 = path.join( path.dirname(require.main.filename), imgDir, justFilname2 );
     file2 = path.join( path.dirname(require.main.filename), imgDir, lastJustFileName );
     
     resizeImg(fs.readFileSync(file1), {width: 510, height: 340}).then(buf => {
         fs.writeFileSync( file2, buf);
     });
+
+    if (fs.existsSync(file1)) {
+        fs.unlinkSync( file1 );
+    }
     
     // update src 
     const src = 'img/' + lastJustFileName
@@ -87,7 +90,7 @@ router.post('/updateimg', upload.single('myimage'), (req, res, next) => {
     let json = fs.readFileSync( filePath );
     json = JSON.parse(json)
     json.imgsrc = src;
-    json = JSON.stringify(json);
+    json = JSON.stringify(json, '', 3);
     fs.writeFileSync(filePath, json, function(err) {
         if(err) {
             return console.log(err);
@@ -99,18 +102,13 @@ router.post('/updateimg', upload.single('myimage'), (req, res, next) => {
 })
 
 router.post('/update', (req, res) =>{
-    // todo update uniquement les infos qu'on a exemple ne pas update imgsrc ... name doit pas etre required ici
-    const filePath = path.dirname(require.main.filename) + '/data/' + req.body.id + '.json';
-    let json = {
-        id: req.body.id,
-        filePath: filePath,
-        name: req.body.name,
-        description: 'my description',
-        imgsrc: 'https://lydstyl.github.io/CV_WEB_DEV/portfolio/img/html.jpg'
-    }
+    const filePath = path.join( __dirname, '../data', req.body.id + '.json' )
+    let json = fs.readFileSync( filePath );
+    json = JSON.parse(json)
+    json.name = req.body.name
     json = JSON.stringify(json, '', 3);
     
-    fs.writeFileSync(filePath, json, function(err) {
+    fs.writeFileSync(filePath, json, (err) => {
         if(err) {
             return console.log(err);
         }
