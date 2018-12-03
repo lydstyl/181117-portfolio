@@ -1,11 +1,9 @@
 vérifier fonctionnement windows var isWin = process.platform === "win32";
 
-revoir le descending-sort
-
 ajouter dans le formulaire admin
     image
-        src
-        redim image à l'upload
+        del image aussi
+        form post enctype='multipart/form-data' ajax
     description
         limiter le nb de mot
     lien avec page

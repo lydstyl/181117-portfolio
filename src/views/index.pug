@@ -13,10 +13,10 @@ block content
             if posts[i]
               - var item = posts[i]
               .col-md-4.portfolio-item
-                a(target='_blank' href='./JAVASCRIPT/2016-12-09_plug-ins_jQuery/index.html')
-                  img.img-responsive(src='https://lydstyl.github.io/CV_WEB_DEV/portfolio/img/html.jpg' alt='une_image')
+                a(target='_blank' href='#')
+                  img.img-responsive(src=item.imgsrc alt='une_image')
                 h3
-                  a(target='_blank' href='./JAVASCRIPT/2016-12-09_plug-ins_jQuery/index.html') #{item.name}
+                  a(target='_blank' href='#') #{item.name}
                 p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc egestas purus ligula, eu scelerisque augue viverra a amet.
                 if session.admin
                   p
