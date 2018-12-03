@@ -97,8 +97,9 @@ router.post('/updateimg', upload.single('myimage'), (req, res, next) => {
         }
         console.log("The file was saved!");
     }); 
+    console.log('Well done via ajax :-)');
+    res.json({success : "Updated Successfully", status : 200});
 
-    res.redirect('/');
 })
 
 router.post('/update', (req, res) =>{

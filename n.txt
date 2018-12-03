@@ -1,9 +1,4 @@
-vérifier fonctionnement windows var isWin = process.platform === "win32";
-
 ajouter dans le formulaire admin
-    image
-        del image aussi
-        form post enctype='multipart/form-data' ajax
     description
         limiter le nb de mot
     lien avec page
@@ -15,9 +10,11 @@ menu header à revoir avec au moins une liste déroulante et voir le résultat m
 
 touche final CSS
 
+
 mise en production ?
 
 SEO 20% le plus important
+
 
 demander email à la connexion + vérification adresse ?
 
