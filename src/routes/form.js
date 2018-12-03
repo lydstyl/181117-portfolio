@@ -129,7 +129,19 @@ router.get('/edit/:id', (req, res) =>{
 
 // D
 router.get('/del/:id', (req, res) =>{
-    fs.unlinkSync( path.join(path.dirname(require.main.filename) , 'data' , req.params.id + '.json') );
+    const jsonPath = path.join(__dirname , '../data' , req.params.id + '.json')
+    if ( fs.existsSync(jsonPath) ) {
+        fs.unlinkSync( jsonPath );
+    }
+
+    const imgPath = path.join(__dirname , '../../public/img' , req.params.id);
+    if (fs.existsSync(imgPath + '-sm.png')) {
+        fs.unlinkSync( imgPath + '-sm.png' );
+    }
+    if (fs.existsSync(imgPath + '-sm.jpg')) {
+        fs.unlinkSync( imgPath + '-sm.jpg' );
+    }
+
     res.redirect('/'); 
 })
 
