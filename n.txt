@@ -1,3 +1,4 @@
+4/12
 ajouter dans le formulaire admin
     description
         limiter image à 75 ko max en js front
