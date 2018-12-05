@@ -3,10 +3,11 @@ ajouter dans le formulaire admin
     description
         https://www.npmjs.com/package/cli-truncate
         limiter le nb de mot à 100 cara
-        éditer l'id --> remplacer l'id ?
-        bug titre avec espace et img url remplacer les espaces
+    éditer l'id --> remplacer l'id ?
+    bug titre avec espace et img url remplacer les espaces
     lien avec page
         avec toute la description et bien aéré + lien du projet s'il y en a
+    Mettre à jour la date de modification à l'ajout d'un post
 
 footer à compléter
 
