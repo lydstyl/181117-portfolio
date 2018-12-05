@@ -1,24 +1,38 @@
 extends layout
 
 block content
-  if file
-    h1 Edit or update #{file.id} // #{file.name}
-    form(action='/form/update' method='post')
-      input(type='hidden' id='id' name='id' value=file.id)
-      label(for='name') Name:
-      input(type='text' id='name' name='name' value=file.name required)
-      input.d-none(type='submit' value='go')
-    form#ajax-upload(action='/form/updateimg' method='post' enctype='multipart/form-data')
-      label(for='myimage') Image:
-      input(type='hidden' name='id' value=file.id)
-      input(type='file' name='myimage')
-      br
-      input(type='submit' name='submit' value='submit')
-    div#result.d-none
-      img(src="https://surroundedbyflowers.com/wp-content/themes/opalmine/img/spinner.gif", alt="spinner")
-  else
-    h1 Add or create
-    form(action='add' method='post')
-      label(for='name') Name:
-      input(type='text' id='name' name='name' required)
-      input(type='submit' value='go')
+  .container
+    if file
+      h1 Edition de #{file.id}
+      form.row(action='/form/update' method='post')
+        .col-sm-12
+          input(type='hidden' id='id' name='id' value=file.id)
+          label(for='name') name:
+          input.col(type='text' id='name' name='name' value=file.name required)
+        .col-sm-12
+          label(for='link') link:
+          input.col(type='text' id='link' name='link' value=file.link)
+        .col-sm-12
+          label(for='lgdesc') lgdesc:
+          textarea.col(id='lgdesc' name='lgdesc' rows="10")= file.lgdesc
+          input.d-none(type='submit' value='go')
+      form#ajax-upload.row(action='/form/updateimg' method='post' enctype='multipart/form-data')
+        .col-sm-12
+          input(type='hidden' name='id' value=file.id)
+          
+          label(for='myimage') myimage:
+          input.row.col(type='file' name='myimage')
+          div#result.d-none.col-sm-12
+            img(src="https://surroundedbyflowers.com/wp-content/themes/opalmine/img/spinner.gif", alt="spinner")
+        .col-sm-12
+          hr
+          input(type='submit' name='submit' value='submit')
+    else
+      h1 Add or create
+      form.row(action='add' method='post')
+        .col-sm-12
+          label(for='name') Name:
+          input(type='text' id='name' name='name' required)
+        .col-sm-12
+          input(type='submit' value='go')
+    hr
