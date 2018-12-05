@@ -14,19 +14,21 @@ block content
               if posts[i]
                 - var item = posts[i]
                 .col-md-4
-                  a
+                  a(href=item.link target="_blank") 
                     .img(target='_blank' href='#' style="background-image:url(" + item.imgsrc + ");")
                   h3= item.name
-                  p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc egestas purus ligula, eu scelerisque augue viverra a amet.
+                  p= item.smdesc
+                    span 
+                    a(href="experience/" + item.id) en savoir plus
+                      
                   if session.admin
                     p
-                      a(href="form/edit/" + item.id) Editer le post
-                      br
-                      a(href="form/del/" + item.id) Supprimer le post
+                      a(href="form/edit/" + item.id) Editer
+                      span  / 
+                      a(href="form/del/" + item.id) Supprimer
     else
-      p Sorry boby mais on dirait bien qu'il n'y a pas de post
+      p Sorry, on dirait bien qu'il n'y a pas de post.
 
-    hr
     - var page = 0;
     nav
       ul.justify-content-center.pagination.pagination-lg

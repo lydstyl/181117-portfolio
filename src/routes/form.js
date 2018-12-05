@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
 const resizeImg = require('resize-img');
+const cliTruncate = require('cli-truncate');
 
 const DateId = require('../helper/maintenant.js');
 const getFiles = require('../model/model-post')
@@ -58,7 +59,6 @@ router.post('/add', (req, res) =>{
 
 router.post('/updateimg', upload.single('myimage'), (req, res, next) => {
     // todo simplify
-
     // req.file is the `myimage` file
     // req.body will hold the text fields, if there were any
     let ext = req.file.originalname.split('.');
@@ -106,9 +106,13 @@ router.post('/update', (req, res) =>{
     const filePath = path.join( __dirname, '../data', req.body.id + '.json' )
     let json = fs.readFileSync( filePath );
     json = JSON.parse(json)
-    json.name = req.body.name
-    json = JSON.stringify(json, '', 3);
+
+    json.name = req.body.name;
+    json.link = req.body.link;
+    json.lgdesc = req.body.lgdesc;
+    json.smdesc = cliTruncate(req.body.lgdesc, 100);
     
+    json = JSON.stringify(json, '', 3);
     fs.writeFileSync(filePath, json, (err) => {
         if(err) {
             return console.log(err);

@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  .container
+    h1= file.name
+    img(src= '/' + file.imgsrc, alt="img")
+    p= file.lgdesc
+    p
+      a(href=file.link target="_blank") Découvrir

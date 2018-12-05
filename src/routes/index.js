@@ -1,7 +1,11 @@
 const express = require('express');
-const router = express.Router();
+const path = require('path');
+const fs = require('fs');
 const bcrypt = require('bcryptjs');
+
 const getPosts = require('../model/model-post').getPosts
+
+const router = express.Router();
 
 router.get('/', (req, res) => {
   let postsAndPageNb = getPosts(req);
@@ -41,6 +45,12 @@ router.post('/admin', (req, res) =>{
 router.get('/logout', (req, res) =>{
   req.session = null
   res.redirect('/');
+})
+
+router.get('/experience/:id', (req, res) =>{
+  let file = fs.readFileSync( path.dirname(require.main.filename) + '/data/' + req.params.id + '.json', 'utf8' );
+  file = JSON.parse(file)
+  res.render('experience', { title: 'Portfolio admin', file: file })
 })
 
 module.exports = router;
