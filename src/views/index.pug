@@ -1,30 +1,32 @@
 extends layout
 
 block content
-  h1= message
-  if posts
-    each post, index in posts
-      if index % 3 == 0
-        .row
-          - var n = 0
-          while n < 3
-            - var i = index + n
-            - n++
-            if posts[i]
-              - var item = posts[i]
-              .col-md-4.portfolio-item
-                a(target='_blank' href='#')
-                  div.img(style="background-image:url(" + item.imgsrc + ");")
-                h3
-                  a(target='_blank' href='#') #{item.name}
-                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc egestas purus ligula, eu scelerisque augue viverra a amet.
-                if session.admin
-                  p
-                    a(href="form/edit/" + item.id) Editer le post
-                    br
-                    a(href="form/del/" + item.id) Supprimer le post
+  .posts.container
+    h1= message
+    if posts
+      each post, index in posts
+        if index % 3 == 0
+          .row
+            - var n = 0
+            while n < 3
+              - var i = index + n
+              - n++
+              if posts[i]
+                - var item = posts[i]
+                .col-md-4
+                  a
+                    .img(target='_blank' href='#' style="background-image:url(" + item.imgsrc + ");")
+                  h3= item.name
+                  p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc egestas purus ligula, eu scelerisque augue viverra a amet.
+                  if session.admin
+                    p
+                      a(href="form/edit/" + item.id) Editer le post
+                      br
+                      a(href="form/del/" + item.id) Supprimer le post
+    else
+      p Sorry boby mais on dirait bien qu'il n'y a pas de post
 
-    //h2 Pagination: #{pageNb} page(s)
+    hr
     - var page = 0;
     nav
       ul.justify-content-center.pagination.pagination-lg
@@ -32,5 +34,3 @@ block content
           - page++
           li.page-item
             a.page-link( href="page" + page ) #{page}
-  else
-    p Sorry boby mais on dirait bien qu'il n'y a pas de post

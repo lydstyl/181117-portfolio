@@ -2,8 +2,9 @@
 ajouter dans le formulaire admin
     description
         https://www.npmjs.com/package/cli-truncate
-        limiter image à 75 ko max en js front
-        limiter le nb de mot
+        limiter le nb de mot à 100 cara
+        éditer l'id --> remplacer l'id ?
+        bug titre avec espace et img url remplacer les espaces
     lien avec page
         avec toute la description et bien aéré + lien du projet s'il y en a
 
@@ -18,6 +19,7 @@ mise en production ?
 
 SEO 20% le plus important
 
+limiter image à 75 ko max en js front
 
 demander email à la connexion + vérification adresse ?
 

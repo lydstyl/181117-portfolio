@@ -18,9 +18,8 @@ html
           a.navbar-brand(href='/logout') Logout
         else
           a.navbar-brand(href='admin') Admin
-    .container
-      //header
-        //- img(src="/img/portfolio.gif", alt="portfolio")
-      block content
-    footer Mon footer
+    
+    block content
+    footer.row 
+      .col Mon footer
     script(src='/js/app.js')
