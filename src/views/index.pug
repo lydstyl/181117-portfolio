@@ -14,7 +14,7 @@ block content
               - var item = posts[i]
               .col-md-4.portfolio-item
                 a(target='_blank' href='#')
-                  img.img-responsive(src=item.imgsrc alt='une_image')
+                  div.img(style="background-image:url(" + item.imgsrc + ");")
                 h3
                   a(target='_blank' href='#') #{item.name}
                 p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc egestas purus ligula, eu scelerisque augue viverra a amet.
