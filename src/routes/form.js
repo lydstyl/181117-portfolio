@@ -110,7 +110,7 @@ router.post('/update', (req, res) =>{
     json.name = req.body.name;
     json.link = req.body.link;
     json.lgdesc = req.body.lgdesc;
-    json.smdesc = cliTruncate(req.body.lgdesc, 100);
+    json.smdesc = cliTruncate(req.body.lgdesc, 50);
     
     json = JSON.stringify(json, '', 3);
     fs.writeFileSync(filePath, json, (err) => {

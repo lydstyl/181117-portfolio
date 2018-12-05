@@ -14,12 +14,12 @@ block content
               if posts[i]
                 - var item = posts[i]
                 .col-md-4
-                  a(href=item.link target="_blank") 
+                  a(href="experience/" + item.id)
                     .img(target='_blank' href='#' style="background-image:url(" + item.imgsrc + ");")
                   h3= item.name
                   p= item.smdesc
                     span 
-                    a(href="experience/" + item.id) en savoir plus
+                    a(href="experience/" + item.id) plus
                       
                   if session.admin
                     p
