@@ -1,6 +1,7 @@
 4/12
 ajouter dans le formulaire admin
     description
+        https://www.npmjs.com/package/cli-truncate
         limiter image à 75 ko max en js front
         limiter le nb de mot
     lien avec page
