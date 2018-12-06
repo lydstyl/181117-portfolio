@@ -48,7 +48,7 @@ router.post('/add', (req, res) =>{
         console.log("The file was saved!");
     }); 
 
-    res.redirect('/'); 
+    res.redirect('/manage'); 
 
 })
 

@@ -6,25 +6,7 @@ html
     title= title
     link(rel='stylesheet', href='/css/style.css')
   body
-    header
-      // https://getbootstrap.com/docs/4.1/components/navbar/
-      nav.navbar.navbar-dark.bg-dark
-        a.navbar-brand(href='/') Home
-        a.navbar-brand(target="_blank" href='https://lydstyl.github.io/181101-printable-cv/dist/') CV
-        a.navbar-brand(target="_blank" href="https://www.linkedin.com/in/gabrielbrun") Linkedin
-        a.navbar-brand(target="_blank" href="https://github.com/lydstyl/") Github
-        if session.admin
-          a.navbar-brand(href='/form/add') Add
-          a.navbar-brand(href='/logout') Logout
-        else
-          a.navbar-brand(href='admin') Admin
-    
+    include header.pug
     block content
-    hr
-    footer.row 
-      .col 
-        p Cette page est faite avec Node.js + Epress + une base de données + Pug + Sass + Bootstrap.
-        p Il y a une page admin sécurisée et accessible via un mot de passe. 
-        p Un CRUD permet de gérer les posts. Les images sont uploadées en Ajax. 
-        p La dernière modification a été réalisée le 05/12/2018.
+    include footer.pug
     script(src='/js/app.js')

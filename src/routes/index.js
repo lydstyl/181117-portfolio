@@ -1,9 +1,10 @@
 const express = require('express');
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
 const bcrypt = require('bcryptjs');
 
 const getPosts = require('../model/model-post').getPosts
+const modelPositions = require( path.join('../model/model-positions') )
 
 const router = express.Router();
 
@@ -16,6 +17,12 @@ router.get('/', (req, res) => {
     pageNb: postsAndPageNb.pageNb 
   })
 })
+
+router.get('/manage', (req, res) => {
+  res.render('manage', {
+    posts: modelPositions.getPositions()
+  });
+});
 
 router.get('/page:nb', (req, res) =>{
   if (req.params.nb == 1) {

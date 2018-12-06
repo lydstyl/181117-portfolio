@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    .container
+        h1 Gestion des posts
+        h2 Ajouter un post
+        a(href='/form/add') ajouter
+        h2 Gérer les positions
+        ul
+            each post, index in posts
+                li= post
