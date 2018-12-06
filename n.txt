@@ -1,10 +1,21 @@
-5/12
-
-ne pas déformer l'image
+6/12
 
 éditer l'id --> remplacer l'id ?
 
 Mettre à jour la date de modification à l'ajout d'un post
+
+revoir id sans espace avec position : position-AAMMJJ
+
+gestion des positions dans une nouvelle page on liste les position avant et après puis au bouton go
+    a chaque fois qu'on affiche une page on se base sur le tableau dans positions.json s'il existe sinon on continu comme maintenant
+    a chaque ajout d'un poste
+        s'il existe pas
+            créer un fichier positions.json et mettre le poste dedan
+        sinon
+            le mettre à jour et mettant le nouveau poste à la fin
+    a chaque changemnt de position via fleche haut ou bas de la page positions puis clique sur go
+        reconstruire le positions.json
+
 
 bug titre ou id avec espace et img url remplacer les espaces par des - ou autre
 
@@ -23,14 +34,6 @@ demander email à la connexion + vérification adresse ?
 
 analytique
 
-gestion des positions dans une nouvelle page on liste les position avant et après puis au bouton go
-    a chaque fois qu'on affiche une page on se base sur le tableau dans positions.json s'il existe sinon on continu comme maintenant
-    a chaque ajout d'un poste
-        s'il existe pas
-            créer un fichier positions.json et mettre le poste dedan
-        sinon
-            le mettre à jour et mettant le nouveau poste à la fin
-    a chaque changemnt de position via fleche haut ou bas de la page positions puis clique sur go
-        reconstruire le positions.json
+
 
 remplacer json par firebase ou mongodb
