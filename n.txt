@@ -1,5 +1,7 @@
 5/12
 
+ne pas déformer l'image
+
 éditer l'id --> remplacer l'id ?
 
 Mettre à jour la date de modification à l'ajout d'un post
