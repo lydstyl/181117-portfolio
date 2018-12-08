@@ -13,6 +13,11 @@ const uploadDir = './public/img';
 const router = express.Router();
 const upload = multer({ dest: uploadDir })
 
+function updateJsonPositions() {
+    fs.unlinkSync( path.join( __dirname, 'data/positions.json'));
+    modelPosition.addDataFilesInPositions()
+}
+
 router.get('/add', (req, res) =>{
     if (req.session.admin == 'admin') {
         res.render('add', {  })
@@ -50,6 +55,7 @@ router.post('/add', (req, res) =>{
     }); 
 
     modelPositions.addPosition( id + '.json' )
+    updateJsonPositions()
 
     res.redirect('/'); 
 })
@@ -147,7 +153,7 @@ router.get('/del/:id', (req, res) =>{
         fs.unlinkSync( imgPath + '-sm.jpg' );
     }
 
-    modelPositions.rmPosition( req.params.id + '.json')
+    modelPositions.rmPosition( req.params.id + '.json') // or updateJsonPositions() might work too
 
     res.redirect('/'); 
 })

@@ -1,7 +1,7 @@
-8/12
+9/12
 
 tout revoir avec les positions gérables
-    C R U D
+    recetter et corriger le crud
 
 comment avoir des controllers et un MVC plus clair ?
 

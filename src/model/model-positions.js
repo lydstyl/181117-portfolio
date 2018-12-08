@@ -83,6 +83,7 @@ function rmPosition(position) {
             newPositions.push(pos)
         }
     });
+    writeJsonPositions(newPositions)
     return newPositions
 }
 function addPosition(position) {
