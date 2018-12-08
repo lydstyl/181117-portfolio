@@ -27,6 +27,7 @@ router.get('/', (req, res) => {
 
   res.render('index', { 
     title: 'Portfolio Gabriel Brun', 
+    bodyClass: 'home-page',
     message: 'Bienvenu sur mon portfolio!', 
     posts: postsAndPageNb.posts, 
     pageNb: postsAndPageNb.pageNb 
@@ -41,11 +42,11 @@ router.get('/manage', (req, res) => {
 
 router.get('/page:nb', (req, res) =>{
   if (req.params.nb == 1) {
-    res.redirect('/') // TODO Cannot set headers after they are sent to the client
+    res.redirect('/')
   }
   let postsAndPageNb = getPosts(req);
   if (!postsAndPageNb.posts.length) {
-    res.redirect('/') // TODO Cannot set headers after they are sent to the client
+    res.redirect('/')
   }else{
     res.render('index', { title: 'Portfolio Gabriel Brun', message: `Tu as demandé la page ${req.params.nb}`, posts: postsAndPageNb.posts, pageNb: postsAndPageNb.pageNb })
   }
