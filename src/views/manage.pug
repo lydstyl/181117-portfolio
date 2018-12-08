@@ -8,4 +8,10 @@ block content
         h2 Gérer les positions
         ul
             each post, index in posts
-                li= post
+                li.position
+                    i.fas.fa-arrow-down
+                    span= post
+                    i.fas.fa-arrow-up
+        form#ajax-update(action='/form/update-positions' method='post')
+            input(type='hidden' name='positions' value='json position here')
+            input(type='submit' name='submit' value='submit')

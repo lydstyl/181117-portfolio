@@ -148,4 +148,10 @@ router.get('/del/:id', (req, res) =>{
     res.redirect('/'); 
 })
 
+router.post('/update-positions', (req, res) =>{
+    console.log('hiiiihaaaa');
+    const positions = JSON.parse( req.body.positions )
+    console.log( positions );
+})
+
 module.exports = router;

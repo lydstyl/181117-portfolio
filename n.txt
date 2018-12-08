@@ -1,5 +1,9 @@
 6/12
 
+gérer les positions après l'envoi ajax
+
+comment avoir des controllers et un MVC plus clair ?
+
 éditer l'id --> remplacer l'id ?
 
 Mettre à jour la date de modification à l'ajout d'un post
