@@ -1,4 +1,4 @@
 node_modules
 *.css
 src/data/*
-publi/img/*
+public/img/*
