@@ -74,3 +74,13 @@ if (document.querySelector('li.position')) {
         xhr.send(encodeURI('positions=' + JSON.stringify( getPositions() ) ));
     })
 }
+
+if (document.getElementsByClassName('home-page').length) {
+    const rmLinks = document.querySelectorAll('[href^="form/del/"]')
+    if ( !(rmLinks.length > 1) ) {
+        const rmLink = rmLinks[0]
+        const slash = rmLink.parentNode.querySelector('span')
+        rmLink.classList.add("d-none")
+        slash.classList.add("d-none")
+    }
+}
