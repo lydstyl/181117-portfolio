@@ -1,26 +1,31 @@
 const fs = require('fs')
 const path = require('path')
 
-function getPositions() {
-    const positionsPath = path.join( __dirname, '../data/positions.json' )
-    let positions = require( positionsPath )
+const positionsPath = path.join( __dirname, '../data/positions.json' )
 
-    let dataFiles = fs.readdirSync( path.join( __dirname, '../data/' ) )
-    dataFiles.pop( 'positions.json' )
-    for ( const file of dataFiles ) {
-        if ( !positions.includes( file ) ) {
-            positions.unshift( file )
-        }
+function writeJsonPositions(positions) {
+    if (typeof positions == 'string') {
+        positions = JSON.parse(positions)
     }
-
-    const json = JSON.stringify( positions, '', 3 )
-    fs.writeFileSync( positionsPath, json, (err) => {
+    positions = JSON.stringify( positions, '', 3 )
+    fs.writeFileSync( positionsPath, positions, (err) => {
         if( err ) {
             return console.log( err )
         }
         console.log( "The file was saved!" )
     })
+}
 
+function getPositions() {
+    let positions = require( positionsPath )
+    let dataFiles = fs.readdirSync( path.join( __dirname, '../data/' ) )
+    dataFiles.pop( 'positions.json' )
+    for ( let file of dataFiles ) {
+        if ( !positions.includes( file ) ) {
+            positions.unshift( file )
+        }
+    }
+    writeJsonPositions(positions)
     return positions
 }
 
@@ -32,12 +37,9 @@ function getPositions() {
 // function getPosition(fileName) {
     
 // }
-// function setPositions(positions) {
-//     // {
-//     //     "positions": ["one", "two"]
-//     // }
-//     setFilesNames(positions);
-// }
+function setPositions(positions) {
+    writeJsonPositions(positions)
+}
 // function rmPosition(fileName) {
 //     setFilesNames(positions);
 // }
@@ -49,5 +51,6 @@ function getPositions() {
 
 module.exports = {
     getPositions: getPositions,
+    updatePositions: setPositions
     //setPositions: setPositions
 }

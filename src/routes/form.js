@@ -7,6 +7,7 @@ const cliTruncate = require('cli-truncate');
 
 const DateId = require('../helper/maintenant.js');
 const getFiles = require('../model/model-post')
+const modelPositions = require('../model/model-positions')
 const uploadDir = './public/img';
 
 const router = express.Router();
@@ -150,8 +151,7 @@ router.get('/del/:id', (req, res) =>{
 
 router.post('/update-positions', (req, res) =>{
     console.log('hiiiihaaaa');
-    const positions = JSON.parse( req.body.positions )
-    console.log( positions );
+    modelPositions.updatePositions( req.body.positions );
 })
 
 module.exports = router;
