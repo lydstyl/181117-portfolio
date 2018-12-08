@@ -2,6 +2,30 @@ const fs = require('fs');
 const path = require('path');
 const descendingSort = require('../helper/descending-sort.js')
 
+function initFirstPost() {
+    const folder = path.join(__dirname, '../data')
+    let json = {
+        "id": "initFirstPost",
+        "postCreationDate": "2018-12-08T12:38:41.755Z",
+        "name": "initFirstPost",
+        "description": "my description",
+        "imgsrc": "https://lydstyl.github.io/CV_WEB_DEV/portfolio/img/html.jpg"
+     }
+    json = JSON.stringify(json, '', 3);
+    fs.writeFileSync( path.join(folder, 'initFirstPost.json'), json, function(err) {
+        if(err) {
+            return console.log(err);
+        }
+        console.log("The file was saved!");
+    }); 
+    json = JSON.stringify(["initFirstPost"], '', 3);
+    fs.writeFileSync(path.join(folder, 'positions.json'), json, function(err) {
+        if(err) {
+            return console.log(err);
+        }
+        console.log("The file was saved!");
+    }); 
+}
 function getPagesNumber(items, pageIems) {
     let tmp = items / pageIems;
     tmp = tmp.toString().split('.');
@@ -18,7 +42,13 @@ function getFiles() {
 }
 
 function getFilesForPage( itemsByPage, pageNumber ) {
-    let files = getFiles()
+    let tmp = getFiles()
+    let files = []
+    tmp.forEach(file => {
+        if (file != 'positions.json') {
+            files.push(file)
+        }
+    });
     files = descendingSort(files)
     const pageNb = getPagesNumber(files.length, 9);
 
@@ -57,5 +87,6 @@ function getPosts(req) {
 
 module.exports = {
     getPosts: getPosts,
-    getFiles: getFiles
+    getFiles: getFiles,
+    initFirstPost: initFirstPost
 }

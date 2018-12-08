@@ -14,12 +14,20 @@ function writeJsonPositions(positions) {
         }
         console.log( "The file was saved!" )
     })
+    return positions
 }
 
-function getPositions() {
-    let positions = require( positionsPath )
+function getDataFiles() {
     let dataFiles = fs.readdirSync( path.join( __dirname, '../data/' ) )
     dataFiles.pop( 'positions.json' )
+    return dataFiles
+}
+function getPositions() {
+    return require( positionsPath )
+}
+function addDataFilesInPositions() {
+    const dataFiles = getDataFiles()
+    let positions = getPositions()
     for ( let file of dataFiles ) {
         if ( !positions.includes( file ) ) {
             positions.unshift( file )
@@ -28,29 +36,26 @@ function getPositions() {
     writeJsonPositions(positions)
     return positions
 }
-
-// function addPosition(fileName) {
-//     positions = getPositions();
-//     //position.push
-//     setFilesNames(positions);
-// }
-// function getPosition(fileName) {
-    
-// }
-function setPositions(positions) {
-    writeJsonPositions(positions)
+function rmPositionsNotInData() {
+    const dataFiles = getDataFiles()
+    let positions = getPositions()
+    let newPositions = []
+    for ( let file of positions ) {
+        if ( dataFiles.includes( file ) ) {
+            newPositions.push(file)
+        }
+    }
+    writeJsonPositions(newPositions)
+    return newPositions
 }
-// function rmPosition(fileName) {
-//     setFilesNames(positions);
-// }
-
-// function setFilesNames(positions) {
-//     console.log('setFilesNames ...');
-//     console.log(positions);
-// }
+function mirrorDataPositions() {
+    let positions = addDataFilesInPositions()
+    positions = rmPositionsNotInData()
+    return positions
+}
 
 module.exports = {
     getPositions: getPositions,
-    updatePositions: setPositions
-    //setPositions: setPositions
+    updatePositions: writeJsonPositions,
+    mirrorDataPositions: mirrorDataPositions
 }

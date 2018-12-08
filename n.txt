@@ -1,6 +1,6 @@
 6/12
 
-gérer les positions après l'envoi ajax
+tout revoir avec les positions gérables
 
 comment avoir des controllers et un MVC plus clair ?
 

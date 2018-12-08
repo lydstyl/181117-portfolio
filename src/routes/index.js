@@ -2,14 +2,29 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
+const modelPost = require('../model/model-post')
 
-const getPosts = require('../model/model-post').getPosts
+const getPosts = modelPost.getPosts
 const modelPositions = require( path.join('../model/model-positions') )
 
 const router = express.Router();
 
+/**
+ * Return false if there is no data/postxx.json or true otherway
+ */
+function dataPost() {
+  const files = modelPost.getFiles()
+  if (files.length == 1 && files[0] == 'positions.json') return false
+  return true
+}
+
 router.get('/', (req, res) => {
+  if ( !dataPost() ) {
+    modelPost.initFirstPost(res)
+  }
+  modelPositions.mirrorDataPositions()
   let postsAndPageNb = getPosts(req);
+
   res.render('index', { 
     title: 'Portfolio Gabriel Brun', 
     message: 'Bienvenu sur mon portfolio!', 
@@ -20,7 +35,7 @@ router.get('/', (req, res) => {
 
 router.get('/manage', (req, res) => {
   res.render('manage', {
-    posts: modelPositions.getPositions()
+    posts: dataPost() ? modelPositions.getPositions() : []
   });
 });
 
