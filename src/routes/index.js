@@ -2,9 +2,8 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
-const modelPost = require('../model/model-post')
 
-const getPosts = modelPost.getPosts
+const modelPost = require('../model/model-post')
 const modelPositions = require( path.join('../model/model-positions') )
 
 const router = express.Router();
@@ -22,8 +21,8 @@ router.get('/', (req, res) => {
   if ( !dataPost() ) {
     modelPost.initFirstPost(res)
   }
-  modelPositions.mirrorDataPositions()
-  let postsAndPageNb = getPosts(req);
+  //modelPositions.mirrorDataPositions()
+  let postsAndPageNb = modelPost.getPosts(req);
 
   res.render('index', { 
     title: 'Portfolio Gabriel Brun', 
@@ -44,7 +43,7 @@ router.get('/page:nb', (req, res) =>{
   if (req.params.nb == 1) {
     res.redirect('/')
   }
-  let postsAndPageNb = getPosts(req);
+  let postsAndPageNb = modelPost.getPosts(req);
   if (!postsAndPageNb.posts.length) {
     res.redirect('/')
   }else{

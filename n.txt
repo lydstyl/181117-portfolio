@@ -1,6 +1,7 @@
 8/12
 
 tout revoir avec les positions gérables
+    C R U D
 
 comment avoir des controllers et un MVC plus clair ?
 

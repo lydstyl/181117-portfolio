@@ -56,6 +56,6 @@ function mirrorDataPositions() {
 
 module.exports = {
     getPositions: getPositions,
-    updatePositions: writeJsonPositions,
+    writeJsonPositions: writeJsonPositions,
     mirrorDataPositions: mirrorDataPositions
 }

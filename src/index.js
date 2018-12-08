@@ -1,9 +1,10 @@
-const cookieSession = require('cookie-session')
 const express = require('express')
 const path = require('path');
+const cookieSession = require('cookie-session')
+const sassMiddleware = require('node-sass-middleware');
+
 const indexRouter = require('./routes/index');
 const form = require('./routes/form');
-const sassMiddleware = require('node-sass-middleware');
 
 let app = express();
 
@@ -23,8 +24,8 @@ app.use(function(req,res,next){
 app.use(express.urlencoded({extended: true}));
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(sassMiddleware({
   /* Options */

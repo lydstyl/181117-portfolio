@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const descendingSort = require('../helper/descending-sort.js')
+//const descendingSort = require('../helper/descending-sort.js')
 
 function initFirstPost() {
     const folder = path.join(__dirname, '../data')
@@ -19,12 +19,7 @@ function initFirstPost() {
         console.log("The file was saved!");
     }); 
     json = JSON.stringify(["initFirstPost"], '', 3);
-    fs.writeFileSync(path.join(folder, 'positions.json'), json, function(err) {
-        if(err) {
-            return console.log(err);
-        }
-        console.log("The file was saved!");
-    }); 
+    writeJsonPositions(json)
 }
 function getPagesNumber(items, pageIems) {
     let tmp = items / pageIems;
@@ -40,16 +35,15 @@ function getFiles() {
     const dataFolder = path.join( path.dirname(require.main.filename), 'data');
     return fs.readdirSync( dataFolder );
 }
+function getPositions() {
+    const dataFolder = path.join(__dirname, '../data', 'positions.json')
+    return require( dataFolder )
+}
 
 function getFilesForPage( itemsByPage, pageNumber ) {
-    let tmp = getFiles()
-    let files = []
-    tmp.forEach(file => {
-        if (file != 'positions.json') {
-            files.push(file)
-        }
-    });
-    files = descendingSort(files)
+    let files = getPositions()
+    // console.log('files !');
+    // console.log(files);
     const pageNb = getPagesNumber(files.length, 9);
 
     let index1 = (pageNumber - 1) * itemsByPage;
@@ -69,11 +63,14 @@ function getPosts(req) {
         PageNum = req.params.nb;
     }
     let filesAndPageNb = getFilesForPage( 9, PageNum )
-    let files = filesAndPageNb.files
+
+    // console.log('les files !');
+    // console.log(filesAndPageNb.files);
+    
     let posts = [];
-    for (let i in files) {
-        let file = files[i];
-        file = fs.readFileSync( path.dirname(require.main.filename) + '/data/' + file, 'utf8' ); // todo join
+    for (let i in filesAndPageNb.files) {
+        let file = filesAndPageNb.files[i];
+        file = fs.readFileSync( path.join(path.dirname(require.main.filename), 'data', file), 'utf8' )
         posts.push( JSON.parse(file) )
     }
 

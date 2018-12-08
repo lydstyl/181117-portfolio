@@ -48,9 +48,7 @@ router.post('/add', (req, res) =>{
         }
         console.log("The file was saved!");
     }); 
-
-    res.redirect('/manage'); 
-
+    res.redirect('/'); 
 })
 
 // R in home page ...
@@ -87,7 +85,7 @@ router.post('/updateimg', upload.single('myimage'), (req, res, next) => {
     
     // update src 
     const src = 'img/' + lastJustFileName
-    const filePath = path.dirname(require.main.filename) + '/data/' + req.body.id + '.json';
+    const filePath = path.join( path.dirname(require.main.filename), 'data', req.body.id + '.json')
     let json = fs.readFileSync( filePath );
     json = JSON.parse(json)
     json.imgsrc = src;
@@ -150,8 +148,9 @@ router.get('/del/:id', (req, res) =>{
 })
 
 router.post('/update-positions', (req, res) =>{
-    console.log('hiiiihaaaa');
-    modelPositions.updatePositions( req.body.positions );
+    console.log('hiiiihaaaa /update-positions');
+    modelPositions.writeJsonPositions( req.body.positions, req );
+    //res.redirect('/'); 
 })
 
 module.exports = router;
