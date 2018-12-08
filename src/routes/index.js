@@ -7,6 +7,8 @@ const modelPost = require( path.join('../model/model-post') )
 const modelPositions = require( path.join('../model/model-positions') )
 const initialiseData = require( path.join('../model/model-initialise-data') )
 
+const noData = require( path.join('../helper/no-data') )
+
 const router = express.Router();
 
 
@@ -27,7 +29,7 @@ router.get('/', (req, res) => {
 
 router.get('/manage', (req, res) => {
   res.render('manage', {
-    posts: dataPost() ? modelPositions.getPositions() : []
+    posts: !noData() ? modelPositions.getPositions() : []
   });
 });
 

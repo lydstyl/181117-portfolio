@@ -4,16 +4,7 @@ const path = require('path')
 const modelPost = require( path.join('../model/model-post') )
 const modelPosition = require( path.join('../model/model-positions') )
 
-/**
- * Return true if there is no data/<post>.json or fase otherway
- */
-function noData() {
-    const files = modelPost.getFiles()
-    if ( !files.length || (files.length == 1 && files[0] == 'positions.json') ) {
-        return true
-    }
-    return false
-}
+const noData = require( path.join('../helper/no-data') )
 
 module.exports = function () {
     console.log('initializing...')
