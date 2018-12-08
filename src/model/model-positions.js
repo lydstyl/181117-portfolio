@@ -18,19 +18,41 @@ function writeJsonPositions(positions) {
 }
 
 function getDataFiles() {
-    let dataFiles = fs.readdirSync( path.join( __dirname, '../data/' ) )
-    dataFiles.pop( 'positions.json' )
+    let tmp = fs.readdirSync( path.join( __dirname, '../data/' ) )
+    let dataFiles = []
+    tmp.forEach(file => {
+        if ( !(file == 'positions.json') ) {
+            dataFiles.push(file)
+        }
+    });
     return dataFiles
 }
 function getPositions() {
+    if ( !fs.existsSync(positionsPath) ) {
+        json = JSON.stringify('[]', '', 3);
+        fs.writeFileSync( positionsPath, json, (err) => {
+            if(err) {
+                return console.log(err);
+            }
+            console.log("The file was saved!");
+        })
+    }
     return require( positionsPath )
 }
 function addDataFilesInPositions() {
     const dataFiles = getDataFiles()
     let positions = getPositions()
+    if (typeof positions == 'string') {
+        positions = JSON.parse(positions)
+    }
     for ( let file of dataFiles ) {
-        if ( !positions.includes( file ) ) {
-            positions.unshift( file )
+        if ( !positions.includes( file ) && file != 'positions.json' ) {
+            if ( !(positions.length) ) {
+                positions.unshift( file )
+            }
+            else{
+                positions.push(file)
+            }
         }
     }
     writeJsonPositions(positions)
@@ -53,9 +75,28 @@ function mirrorDataPositions() {
     positions = rmPositionsNotInData()
     return positions
 }
+function rmPosition(position) {
+    let positions = getPositions()
+    let newPositions = []
+    positions.forEach(pos => {
+        if (pos != position) {
+            newPositions.push(pos)
+        }
+    });
+    return newPositions
+}
+function addPosition(position) {
+    let positions = getPositions()
+    positions = positions.unshift(position)
+    writeJsonPositions( positions )
+    return positions
+}
 
 module.exports = {
     getPositions: getPositions,
     writeJsonPositions: writeJsonPositions,
-    mirrorDataPositions: mirrorDataPositions
+    mirrorDataPositions: mirrorDataPositions,
+    rmPosition: rmPosition,
+    addPosition: addPosition,
+    addDataFilesInPositions: addDataFilesInPositions
 }

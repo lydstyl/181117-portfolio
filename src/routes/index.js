@@ -3,25 +3,17 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 
-const modelPost = require('../model/model-post')
+const modelPost = require( path.join('../model/model-post') )
 const modelPositions = require( path.join('../model/model-positions') )
+const initialiseData = require( path.join('../model/model-initialise-data') )
 
 const router = express.Router();
 
-/**
- * Return false if there is no data/postxx.json or true otherway
- */
-function dataPost() {
-  const files = modelPost.getFiles()
-  if (files.length == 1 && files[0] == 'positions.json') return false
-  return true
-}
+
 
 router.get('/', (req, res) => {
-  if ( !dataPost() ) {
-    modelPost.initFirstPost(res)
-  }
-  //modelPositions.mirrorDataPositions()
+  initialiseData()
+
   let postsAndPageNb = modelPost.getPosts(req);
 
   res.render('index', { 

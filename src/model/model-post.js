@@ -12,14 +12,21 @@ function initFirstPost() {
         "imgsrc": "https://lydstyl.github.io/CV_WEB_DEV/portfolio/img/html.jpg"
      }
     json = JSON.stringify(json, '', 3);
-    fs.writeFileSync( path.join(folder, 'initFirstPost.json'), json, function(err) {
+    fs.writeFileSync( path.join(folder, 'initFirstPost.json'), json, (err) => {
         if(err) {
             return console.log(err);
         }
         console.log("The file was saved!");
     }); 
-    json = JSON.stringify(["initFirstPost"], '', 3);
-    writeJsonPositions(json)
+}
+function writeInitPositions() {
+    const json = JSON.stringify(["initFirstPost.json"], '', 3);
+    fs.writeFileSync( path.join(__dirname, '../data/positions.json'), json, (err) => {
+        if(err) {
+            return console.log(err);
+        }
+        console.log("The file was saved!");
+    }); 
 }
 function getPagesNumber(items, pageIems) {
     let tmp = items / pageIems;
@@ -36,14 +43,15 @@ function getFiles() {
     return fs.readdirSync( dataFolder );
 }
 function getPositions() {
-    const dataFolder = path.join(__dirname, '../data', 'positions.json')
-    return require( dataFolder )
+    const positions = path.join(__dirname, '../data', 'positions.json')
+    if ( !fs.existsSync(positions) ) {
+        writeInitPositions()
+    }
+    return require( positions )
 }
 
 function getFilesForPage( itemsByPage, pageNumber ) {
     let files = getPositions()
-    // console.log('files !');
-    // console.log(files);
     const pageNb = getPagesNumber(files.length, 9);
 
     let index1 = (pageNumber - 1) * itemsByPage;
@@ -64,9 +72,6 @@ function getPosts(req) {
     }
     let filesAndPageNb = getFilesForPage( 9, PageNum )
 
-    // console.log('les files !');
-    // console.log(filesAndPageNb.files);
-    
     let posts = [];
     for (let i in filesAndPageNb.files) {
         let file = filesAndPageNb.files[i];
@@ -74,7 +79,6 @@ function getPosts(req) {
         posts.push( JSON.parse(file) )
     }
 
-    // return posts;
     let postsAndPageNb = {
         posts: posts,
         pageNb: filesAndPageNb.pageNb
@@ -85,5 +89,6 @@ function getPosts(req) {
 module.exports = {
     getPosts: getPosts,
     getFiles: getFiles,
-    initFirstPost: initFirstPost
+    initFirstPost: initFirstPost,
+    writeInitPositions: writeInitPositions
 }

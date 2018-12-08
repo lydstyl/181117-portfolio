@@ -48,6 +48,9 @@ router.post('/add', (req, res) =>{
         }
         console.log("The file was saved!");
     }); 
+
+    modelPositions.addPosition( id + '.json' )
+
     res.redirect('/'); 
 })
 
@@ -144,13 +147,14 @@ router.get('/del/:id', (req, res) =>{
         fs.unlinkSync( imgPath + '-sm.jpg' );
     }
 
+    modelPositions.rmPosition( req.params.id + '.json')
+
     res.redirect('/'); 
 })
 
 router.post('/update-positions', (req, res) =>{
-    console.log('hiiiihaaaa /update-positions');
-    modelPositions.writeJsonPositions( req.body.positions, req );
-    //res.redirect('/'); 
+    console.log('/update-positions');
+    modelPositions.writeJsonPositions( req.body.positions, req )
 })
 
 module.exports = router;
