@@ -40,7 +40,7 @@ function getPositions() {
     if ( !fs.existsSync(positionsPath) ) {
         writeEmptyPositions()
     }
-    const positions = require( positionsPath )
+    const positions = JSON.parse( fs.readFileSync( path.dirname(require.main.filename) + '/data/positions.json', 'utf8' ) ) // because require( positionsPath ) stays in cache ...
     return positions
 }
 function addDataFilesInPositions() {
