@@ -93,13 +93,13 @@ function rmPosition(position) {
 function rmImg(position) {
     const imgSrc = getImgSrc(position)
     if (!imgSrc || imgSrc.includes('http')) {
-        console.log('No image to remove');
+        console.log('No image to remove')
         return
     }
     const imgPath = path.join( __dirname, '../../public', imgSrc )
     try {
         fs.unlinkSync(imgPath)
-        console.log(`Image ${imgPath} removed`);
+        console.log(`Image ${imgPath} removed`)
     } catch(err) {
         console.error(err)
     }
