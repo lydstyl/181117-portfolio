@@ -14,8 +14,8 @@ const router = express.Router();
 const upload = multer({ dest: uploadDir })
 
 function updateJsonPositions() {
-    fs.unlinkSync( path.join( __dirname, 'data/positions.json'));
-    modelPosition.addDataFilesInPositions()
+    modelPositions.writeEmptyPositions()
+    modelPositions.addDataFilesInPositions()
 }
 
 router.get('/add', (req, res) =>{

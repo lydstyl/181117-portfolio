@@ -30,7 +30,7 @@ function writeInitPositions() {
 }
 function getPagesNumber(items, pageIems) {
     let tmp = items / pageIems;
-    tmp = tmp.toString().split('.');
+    tmp = tmp.toString().split('.')
     let pages = tmp[0];
     if (tmp[1] > 0) {
         pages ++;
@@ -52,11 +52,11 @@ function getPositions() {
 
 function getFilesForPage( itemsByPage, pageNumber ) {
     let files = getPositions()
-    const pageNb = getPagesNumber(files.length, 9);
+    const pageNb = getPagesNumber(files.length, 9)
 
-    let index1 = (pageNumber - 1) * itemsByPage;
-    let index2 = index1 + itemsByPage;
-    files = files.slice(index1, index2);
+    let index1 = (pageNumber - 1) * itemsByPage
+    let index2 = index1 + itemsByPage
+    files = files.slice(index1, index2)
 
     let filesAndPageNb = {
         files: files,
@@ -74,9 +74,12 @@ function getPosts(req) {
 
     let posts = [];
     for (let i in filesAndPageNb.files) {
-        let file = filesAndPageNb.files[i];
-        file = fs.readFileSync( path.join(path.dirname(require.main.filename), 'data', file), 'utf8' )
-        posts.push( JSON.parse(file) )
+        let file = filesAndPageNb.files[i]
+        let filePath = path.join(path.dirname(require.main.filename), 'data', file )
+        if (fs.existsSync( filePath )) {
+            file = fs.readFileSync( filePath, 'utf8' )
+            posts.push( JSON.parse(file) )
+        }
     }
 
     let postsAndPageNb = {

@@ -27,15 +27,18 @@ function getDataFiles() {
     });
     return dataFiles
 }
+function writeEmptyPositions() {
+    json = JSON.stringify('[]', '', 3)
+    fs.writeFileSync( positionsPath, json, (err) => {
+        if(err) {
+            return console.log(err);
+        }
+        console.log("The file was saved!");
+    })
+}
 function getPositions() {
     if ( !fs.existsSync(positionsPath) ) {
-        json = JSON.stringify('[]', '', 3);
-        fs.writeFileSync( positionsPath, json, (err) => {
-            if(err) {
-                return console.log(err);
-            }
-            console.log("The file was saved!");
-        })
+        writeEmptyPositions()
     }
     return require( positionsPath )
 }
@@ -99,5 +102,6 @@ module.exports = {
     mirrorDataPositions: mirrorDataPositions,
     rmPosition: rmPosition,
     addPosition: addPosition,
-    addDataFilesInPositions: addDataFilesInPositions
+    addDataFilesInPositions: addDataFilesInPositions,
+    writeEmptyPositions: writeEmptyPositions
 }
