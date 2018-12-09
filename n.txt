@@ -1,7 +1,5 @@
 9/12
 
-ajout de post sans modifier l'ordre
-
 Mettre à jour la date de modification à l'ajout d'un post
 
 menu header à revoir avec au moins une liste déroulante et voir le résultat mobile

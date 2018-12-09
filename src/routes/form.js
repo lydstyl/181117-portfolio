@@ -112,23 +112,23 @@ router.post('/updateimg', upload.single('myimage'), (req, res, next) => {
 
 router.post('/update', (req, res) =>{
     const filePath = path.join( __dirname, '../data', req.body.id + '.json' )
-    let json = fs.readFileSync( filePath );
+    let json = fs.readFileSync( filePath )
     json = JSON.parse(json)
 
-    json.name = req.body.name;
-    json.link = req.body.link;
-    json.lgdesc = req.body.lgdesc;
-    json.smdesc = cliTruncate(req.body.lgdesc, 50);
+    json.name = req.body.name.trim()
+    json.link = encodeURI( req.body.link.trim() )
+    json.lgdesc = req.body.lgdesc.trim()
+    json.smdesc = cliTruncate(req.body.lgdesc, 50)
     
-    json = JSON.stringify(json, '', 3);
+    json = JSON.stringify(json, '', 3)
     fs.writeFileSync(filePath, json, (err) => {
         if(err) {
-            return console.log(err);
+            return console.log(err)
         }
-        console.log("The file was saved!");
+        console.log("The file was saved!")
     }); 
 
-    res.redirect('/'); 
+    res.redirect('/')
 })
 
 router.get('/edit/:id', (req, res) =>{
