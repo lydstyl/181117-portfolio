@@ -70,7 +70,11 @@ router.get('/logout', (req, res) =>{
 router.get('/experience/:id', (req, res) =>{
   let file = fs.readFileSync( path.dirname(require.main.filename) + '/data/' + req.params.id + '.json', 'utf8' );
   file = JSON.parse(file)
-  res.render('experience', { title: 'Portfolio admin', file: file })
+  let srcSlash = '/'
+  if (file.imgsrc.includes('http')) {
+    srcSlash = ''
+  }
+  res.render('experience', { title: 'Portfolio admin', file: file, srcSlash: srcSlash })
 })
 
 module.exports = router;
