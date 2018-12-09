@@ -120,6 +120,19 @@ function addPosition(position) {
     writeJsonPositions( positions )
     return positions
 }
+function writeLastUpdate() {
+    const footerPath = path.join( __dirname, '../views/footer.pug')
+    let footerPug = fs.readFileSync( footerPath, 'utf8' )
+    const date = new Date()
+    const month = date.getMonth() + 1
+    footerPug = footerPug.replace(/(span.last-update) (.*)!/, '$1 ' + date.getDate() + '/' + month + '/' + date.getFullYear() + ' !' )
+    fs.writeFileSync( footerPath, footerPug, (err) => {
+        if(err) {
+            return console.log(err)
+        }
+        console.log("The file was saved!")
+    })
+}
 
 module.exports = {
     getPositions: getPositions,
@@ -129,5 +142,6 @@ module.exports = {
     addPosition: addPosition,
     addDataFilesInPositions: addDataFilesInPositions,
     writeEmptyPositions: writeEmptyPositions,
-    rmImg: rmImg
+    rmImg: rmImg,
+    writeLastUpdate: writeLastUpdate
 }

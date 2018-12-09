@@ -55,8 +55,8 @@ router.post('/add', (req, res) =>{
         }
         console.log("The file was saved!")
     }); 
-
     modelPositions.addPosition( id + '.json' )
+    modelPositions.writeLastUpdate()
     res.redirect('/'); 
 })
 
