@@ -31,11 +31,13 @@ router.post('/add', (req, res) =>{
     const date = new Date()
     const dateId = new DateId( date )
     let position = getFiles.getFiles().length
-    let id = position  + '-' + dateId.name + '-' + req.body.name.substring(0, 9)
+    let name = req.body.name.substring(0, 9)
+    name = name.replace(/\s/g, '_')
+    let id = position  + '-' + dateId.name + '-' + name
     let filePath = path.join( path.dirname(require.main.filename), 'data', id + '.json' );
     if (fs.existsSync(filePath)) {
         position ++;
-        id = position  + '-' + dateId.name + '-' + req.body.name.substring(0, 9)
+        id = position  + '-' + dateId.name + '-' + name
         filePath = path.join( path.dirname(require.main.filename), 'data', id + '.json' );
     }
     let json = {
