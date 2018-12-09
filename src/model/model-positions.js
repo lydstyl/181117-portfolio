@@ -90,6 +90,30 @@ function rmPosition(position) {
     writeJsonPositions(newPositions)
     return newPositions
 }
+function rmImg(position) {
+    const imgSrc = getImgSrc(position)
+    if (!imgSrc || imgSrc.includes('http')) {
+        console.log('No image to remove');
+        return
+    }
+    const imgPath = path.join( __dirname, '../../public', imgSrc )
+    try {
+        fs.unlinkSync(imgPath)
+        console.log(`Image ${imgPath} removed`);
+    } catch(err) {
+        console.error(err)
+    }
+}
+function getImgSrc(position) {
+    let filePath = path.join(path.dirname(require.main.filename), 'data', position )
+    if (fs.existsSync( filePath )) {
+        let imgSrc = fs.readFileSync( filePath, 'utf8' )
+        imgSrc = JSON.parse(imgSrc)
+        imgSrc = imgSrc.imgsrc
+        return imgSrc
+    }
+    return false
+}
 function addPosition(position) {
     let positions = getPositions()
     positions.unshift(position)
@@ -104,5 +128,6 @@ module.exports = {
     rmPosition: rmPosition,
     addPosition: addPosition,
     addDataFilesInPositions: addDataFilesInPositions,
-    writeEmptyPositions: writeEmptyPositions
+    writeEmptyPositions: writeEmptyPositions,
+    rmImg: rmImg
 }
