@@ -47,7 +47,7 @@ function getPositions() {
     if ( !fs.existsSync(positions) ) {
         writeInitPositions()
     }
-    return require( positions )
+    return JSON.parse( fs.readFileSync( path.dirname(require.main.filename) + '/data/positions.json', 'utf8' ) )
 }
 
 function getFilesForPage( itemsByPage, pageNumber ) {
