@@ -7,14 +7,14 @@ TODO
 
 
 FACULTATIF
-    Rendre le code MVC plus clair 
+    Poser des GTM
 
     SEO faire les 20% les plus importants
 
-    Limiter l'upload d'image à 75 ko max en js front
-
+    Rendre le code MVC plus clair 
+    
     Demander un email + vérification de l'email à la première connexion
 
-    Poser des GTM
+    Limiter l'upload d'image à 75 ko max en js front
 
     Remplacer la bdd fs par firebase ou mongodb
