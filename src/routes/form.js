@@ -57,8 +57,6 @@ router.post('/add', (req, res) =>{
     }); 
 
     modelPositions.addPosition( id + '.json' )
-    updateJsonPositions()
-
     res.redirect('/'); 
 })
 

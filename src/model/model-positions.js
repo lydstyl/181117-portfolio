@@ -92,7 +92,7 @@ function rmPosition(position) {
 }
 function addPosition(position) {
     let positions = getPositions()
-    positions = positions.unshift(position)
+    positions.unshift(position)
     writeJsonPositions( positions )
     return positions
 }
