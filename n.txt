@@ -1,12 +1,9 @@
 TODO
-    recetter la suppression d'image
-
     Mettre à jour la date de modification à l'ajout d'un post
 
     Mettre en production de CV et modifier le lien CV du menu header
 
-    Retouche final CSS
-        Augmenter la margin-top des h1
+    Modifier le password avant mise en production
 
     Mettre en production sur le PI
 
