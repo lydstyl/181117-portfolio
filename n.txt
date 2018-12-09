@@ -1,7 +1,7 @@
 9/12
 
 tout revoir avec les positions gérables
-    recetter et corriger le crud
+    recetter et debuger
 
 comment avoir des controllers et un MVC plus clair ?
 

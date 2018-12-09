@@ -40,7 +40,8 @@ function getPositions() {
     if ( !fs.existsSync(positionsPath) ) {
         writeEmptyPositions()
     }
-    return require( positionsPath )
+    const positions = require( positionsPath )
+    return positions
 }
 function addDataFilesInPositions() {
     const dataFiles = getDataFiles()

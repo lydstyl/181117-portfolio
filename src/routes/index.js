@@ -28,8 +28,12 @@ router.get('/', (req, res) => {
 })
 
 router.get('/manage', (req, res) => {
+  let posts = []
+  if ( !noData() ) {
+    posts = modelPositions.getPositions()
+  }
   res.render('manage', {
-    posts: !noData() ? modelPositions.getPositions() : []
+    posts: posts
   });
 });
 
