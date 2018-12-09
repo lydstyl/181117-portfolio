@@ -1,12 +1,5 @@
 9/12
 
-tout revoir avec les positions gérables
-    recetter et debuger
-
-comment avoir des controllers et un MVC plus clair ?
-
-éditer l'id --> remplacer l'id ?
-
 Mettre à jour la date de modification à l'ajout d'un post
 
 revoir id sans espace avec position : position-AAMMJJ
@@ -30,6 +23,7 @@ touche final CSS
 
 mise en production ?
 
+comment avoir des controllers et un MVC plus clair ?
 
 SEO 20% le plus important
 
