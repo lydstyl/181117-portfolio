@@ -17,27 +17,27 @@ module.exports = function () {
     }
     switch (missing) {
         case '-positions':
-            console.log('creating positions');
+            console.log('creating positions')
             if ( noData() ) {
                 modelPost.writeInitPositions()
             }
             else {
                 modelPosition.addDataFilesInPositions()
             }
-            break;
+            break
         case '-data':
-            console.log('creating data');
+            console.log('creating data')
             modelPost.initFirstPost()
             modelPost.writeInitPositions()
-            break;
+            break
         case '-positions-data':
-            console.log('creating positions and data');
+            console.log('creating positions and data')
             modelPost.initFirstPost()
             modelPost.writeInitPositions()
-            break;
+            break
     
         default:
-            console.log('nothing to create');
-            break;
+            console.log('nothing to create')
+            break
     }
 }

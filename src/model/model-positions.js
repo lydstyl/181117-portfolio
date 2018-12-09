@@ -24,16 +24,16 @@ function getDataFiles() {
         if ( !(file == 'positions.json') ) {
             dataFiles.push(file)
         }
-    });
+    })
     return dataFiles
 }
 function writeEmptyPositions() {
     json = JSON.stringify('[]', '', 3)
     fs.writeFileSync( positionsPath, json, (err) => {
         if(err) {
-            return console.log(err);
+            return console.log(err)
         }
-        console.log("The file was saved!");
+        console.log("The file was saved!")
     })
 }
 function getPositions() {
@@ -86,7 +86,7 @@ function rmPosition(position) {
         if (pos != position) {
             newPositions.push(pos)
         }
-    });
+    })
     writeJsonPositions(newPositions)
     return newPositions
 }

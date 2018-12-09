@@ -1,6 +1,6 @@
 const descendingSort = (tab) => {
     tab.sort( (a, b) => {
-        if (a < b) return true;
+        if (a < b) return true
         return false
     })
     return tab

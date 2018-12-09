@@ -13,7 +13,7 @@ if (document.querySelector('[type=file]')) {
             request.onreadystatechange = function(){
                 if (request.readyState != 4) {
                     result.classList.remove("d-none")
-                    go.click();
+                    go.click()
                 }
                 else{
                     result.classList.add("d-none")
@@ -54,24 +54,24 @@ if (document.querySelector('li.position')) {
         arrowUp.addEventListener('click', () => {
             li.parentNode.insertBefore(li, li.previousSibling)
         })
-    });
+    })
 
     document.getElementById('ajax-update').addEventListener("submit", (e)=>{
         e.preventDefault()
         var newName = 'John Smith',
-        xhr = new XMLHttpRequest();
+        xhr = new XMLHttpRequest()
 
-        xhr.open('POST', 'form/update-positions');
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.open('POST', 'form/update-positions')
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
         xhr.onload = function() {
             if (xhr.status === 200 && xhr.responseText !== newName) {
-                alert('Something went wrong.  Name is now ' + xhr.responseText);
+                alert('Something went wrong.  Name is now ' + xhr.responseText)
             }
             else if (xhr.status !== 200) {
-                alert('Request failed.  Returned status of ' + xhr.status);
+                alert('Request failed.  Returned status of ' + xhr.status)
             }
-        };
-        xhr.send(encodeURI('positions=' + JSON.stringify( getPositions() ) ));
+        }
+        xhr.send(encodeURI('positions=' + JSON.stringify( getPositions() ) ))
     })
 }
 
