@@ -1,10 +1,11 @@
 TODO
-    Mettre en production de CV et modifier le lien CV du menu header
+    Mettre en production le portfolio
 
+    Mettre en production le CV 
+    
     Modifier le password avant mise en production
 
-    Mettre en production sur le PI
-
+    Modifier le lien CV du menu header
 
 FACULTATIF
     Poser des GTM
