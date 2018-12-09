@@ -75,7 +75,7 @@ if (document.querySelector('li.position')) {
     })
 }
 
-if (document.getElementsByClassName('home-page').length) {
+if (document.getElementsByClassName('home-page').length && document.querySelector('[href="/logout"]')) {
     const rmLinks = document.querySelectorAll('[href^="form/del/"]')
     if ( !(rmLinks.length > 1) ) {
         const rmLink = rmLinks[0]
@@ -83,4 +83,7 @@ if (document.getElementsByClassName('home-page').length) {
         rmLink.classList.add("d-none")
         slash.classList.add("d-none")
     }
+}
+if (document.querySelectorAll('.posts nav ul li').length == 1) {
+    document.querySelector('.posts nav ul').remove()
 }
