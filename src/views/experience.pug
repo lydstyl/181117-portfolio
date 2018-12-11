@@ -1,12 +1,12 @@
 extends layout
 
 block content
-  .container
+  .container.experience
     h1= file.name
-    a(href=file.link target="_blank")
+    a.xp-img(href=file.link target="_blank")
       img(src=srcSlash + file.imgsrc, alt="img")
     p= file.lgdesc
     p
       a(href=file.link target="_blank") Découvrir
-    p
+    p.back
       a(href="/") Retour

@@ -1,4 +1,6 @@
-TODO Ajouter du contenu
+TODO 
+    Déformation image ...
+    Ajouter du contenu
         Les derniers trucs fais en node notament ce portfolio
         Webpack et le CV
         Codeigniter http://angel-tools.ddns.net/printX/
