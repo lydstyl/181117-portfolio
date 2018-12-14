@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path');
 const cookieSession = require('cookie-session')
-const sassMiddleware = require('node-sass-middleware');
+// const sassMiddleware = require('node-sass-middleware');
 
 const indexRouter = require('./routes/index');
 const form = require('./routes/form');
@@ -27,15 +27,15 @@ app.use(express.urlencoded({extended: true}));
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(sassMiddleware({
-  /* Options */
-  src: path.join(__dirname, 'sass'),
-  dest: path.join(__dirname, '../public/css'),
-  indentedSyntax: true, // true = .sass and false = .scss
-  debug: true,
-  outputStyle: 'compressed',
-  prefix:  '/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
-}));
+// app.use(sassMiddleware({
+//   /* Options */
+//   src: path.join(__dirname, 'sass'),
+//   dest: path.join(__dirname, '../public/css'),
+//   indentedSyntax: true, // true = .sass and false = .scss
+//   debug: true,
+//   outputStyle: 'compressed',
+//   prefix:  '/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
+// }));
 // Note: you must place sass-middleware *before* `express.static` or else it will
 // not work.
 app.use( express.static( path.join(__dirname, '../public') ) );
