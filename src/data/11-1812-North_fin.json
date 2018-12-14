@@ -1,0 +1,11 @@
+{
+   "id": "11-1812-North_fin",
+   "position": 11,
+   "postCreationDate": "2018-12-14T22:06:12.534Z",
+   "name": "North finder",
+   "description": "my description",
+   "imgsrc": "img/11-1812-North_fin-sm.png",
+   "link": "http://angel-tools.ddns.net/northFinder/",
+   "lgdesc": "Un projet que j'avais fait via un script en Python dans un avion.\r\nIl permet de trouver le nord en regardant le soleil ou la lune. J'avais eu cette idée lorsque je m'étais perdu à Marrakech.\r\nJ'ai voulu lui donner vie quand j'ai appris à utiliser Javascript lors de ma reconversion.",
+   "smdesc": "Un projet que j'avais fait via un script en Pytho…"
+}

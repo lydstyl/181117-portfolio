@@ -1,0 +1,11 @@
+{
+   "id": "14-1812-Postgresq",
+   "position": 14,
+   "postCreationDate": "2018-12-14T22:22:45.255Z",
+   "name": "PostgreSQL + Heroku + Django",
+   "description": "my description",
+   "imgsrc": "img/14-1812-Postgresq-sm.jpeg",
+   "link": "https://dashboard.heroku.com",
+   "lgdesc": "Mise en production d'une mini application Django pour tester. Il a fallu utiliser PostgreSQL.",
+   "smdesc": "Mise en production d'une mini application Django …"
+}

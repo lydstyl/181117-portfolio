@@ -1,13 +1,3 @@
-TODO Ajouter du contenu
-        Les derniers trucs fais en node notament ce portfolio
-        Webpack et le CV
-        Codeigniter http://angel-tools.ddns.net/printX/
-        Ancien CV http://gabrielbrun.free.fr/
-        Ancien Portfolio https://lydstyl.github.io/CV_WEB_DEV/portfolio/portfolio1.html
-        Les lien sur angel tool
-        Django
-        Script python
-
 FACULTATIF
     Poser des GTM
 

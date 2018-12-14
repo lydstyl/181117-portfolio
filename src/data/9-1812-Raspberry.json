@@ -1,0 +1,11 @@
+{
+   "id": "9-1812-Raspberry",
+   "position": 9,
+   "postCreationDate": "2018-12-14T21:57:50.594Z",
+   "name": "Raspberry Pi",
+   "description": "my description",
+   "imgsrc": "img/9-1812-Raspberry-sm.png",
+   "link": "https://www.raspberrypi.org/",
+   "lgdesc": "Réalisation d'un server web avec Apache ainsi qu'un server Node.js chez moi.\r\nRéalisation d'un system de sauvegarde automatique de mon disque dur réseau (NAS) avec le disque dur de mon Raspberry via un cron.",
+   "smdesc": "Réalisation d'un server web avec Apache ainsi qu'…"
+}
