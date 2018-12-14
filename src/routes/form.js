@@ -2,6 +2,7 @@ const express = require('express')
 const fs = require('fs')
 const path = require('path')
 const multer = require('multer')
+const sizeOf = require('image-size');
 const resizeImg = require('resize-img')
 const cliTruncate = require('cli-truncate')
 
@@ -81,10 +82,28 @@ router.post('/updateimg', upload.single('myimage'), (req, res, next) => {
     
     const imgDir = '../public/img/'
     const lastJustFileName = req.body.id + '-sm.' + ext
+    const expected = {
+        width: 510,
+        height: 340
+    }
     file1 = path.join( path.dirname(require.main.filename), imgDir, justFilname2 )
     file2 = path.join( path.dirname(require.main.filename), imgDir, lastJustFileName )
+
+    const dimensions = sizeOf( file1 );
+    function reduceImg() {
+        if (dimensions.width > expected.width) {
+            return {
+                width : expected.width,
+                height: dimensions.height * expected.width / dimensions.width
+            }
+        }
+        else{
+            return dimensions
+        }
+    }
+    const newDim = reduceImg()
     
-    resizeImg(fs.readFileSync(file1), {width: 510, height: 340}).then(buf => {
+    resizeImg(fs.readFileSync(file1), {width: newDim.width, height: newDim.height}).then(buf => {
         fs.writeFileSync( file2, buf)
     })
 
