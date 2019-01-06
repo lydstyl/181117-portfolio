@@ -11,7 +11,7 @@ app.use(cookieSession({
   name: 'session',
   keys: ['key1'],
   // Cookie Options
-  maxAge: 8 * 60 * 60 * 1000 // 8 hours
+  maxAge: 3 * 60 * 60 * 1000 // 3 hours
 }))
 
 /* give your templates access to your session */

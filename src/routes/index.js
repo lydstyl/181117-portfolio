@@ -17,11 +17,11 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
   initialiseData()
-
   let postsAndPageNb = modelPost.getPosts(req)
-
-  sendEmail()
-
+  if (!req.session.emailed) {
+    req.session.emailed = true
+    sendEmail()
+  }
   res.render('index', { 
     title: 'Portfolio Gabriel Brun', 
     bodyClass: 'home-page',
