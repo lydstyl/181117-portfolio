@@ -4,15 +4,12 @@ const path = require('path')
 const bcrypt = require('bcryptjs')
 
 const modelPost = require( path.join('../model/model-post') )
-const modelPositions = require( path.join('../model/model-positions') )
 const initialiseData = require( path.join('../model/model-initialise-data') )
 
 const sendEmail = require( path.join('../controller/sendEmail') )
-
-const noData = require( path.join('../helper/no-data') )
+const Manage = require( path.join('../controller/Manage') )
 
 const router = express.Router()
-
 
 router.get('/', (req, res) => {
   initialiseData()
@@ -30,15 +27,7 @@ router.get('/', (req, res) => {
   })
 })
 
-router.get('/manage', (req, res) => {
-  let posts = []
-  if ( !noData() ) {
-    posts = modelPositions.getPositions()
-  }
-  res.render('manage', {
-    posts: posts
-  })
-})
+router.get('/manage', Manage)
 
 router.get('/page:nb', (req, res) =>{
   if (req.params.nb == 1) {
