@@ -4,7 +4,7 @@ module.exports = function () {
         service: 'gmail',
         auth: {
                user: 'lydstyl@gmail.com',
-               pass: 'yourAppPass'
+               pass: 'lgszkzmlhqwnbblj'
         }
     })
     const mailOptions = {
