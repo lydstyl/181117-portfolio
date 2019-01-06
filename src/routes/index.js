@@ -7,6 +7,8 @@ const modelPost = require( path.join('../model/model-post') )
 const modelPositions = require( path.join('../model/model-positions') )
 const initialiseData = require( path.join('../model/model-initialise-data') )
 
+const sendEmail = require( path.join('../controller/sendEmail') )
+
 const noData = require( path.join('../helper/no-data') )
 
 const router = express.Router()
@@ -17,6 +19,8 @@ router.get('/', (req, res) => {
   initialiseData()
 
   let postsAndPageNb = modelPost.getPosts(req)
+
+  sendEmail()
 
   res.render('index', { 
     title: 'Portfolio Gabriel Brun', 
