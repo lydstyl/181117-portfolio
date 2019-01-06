@@ -14,13 +14,12 @@ const noData = require( path.join('../helper/no-data') )
 const router = express.Router()
 
 
-
 router.get('/', (req, res) => {
   initialiseData()
   let postsAndPageNb = modelPost.getPosts(req)
   if (!req.session.emailed) {
     req.session.emailed = true
-    sendEmail()
+    sendEmail(req)
   }
   res.render('index', { 
     title: 'Portfolio Gabriel Brun', 
