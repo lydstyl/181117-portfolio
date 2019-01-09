@@ -6,6 +6,6 @@
    "description": "my description",
    "imgsrc": "img/19-1812-Node.js_s-sm.png",
    "link": "https://github.com/lydstyl/1226-responsiveImg",
-   "lgdesc": "Vous indiquez dans un .json le chemin du dossier où se trouvent les images ainsi que les résolutions que vous souhaitez. Le script va prendre les images une par une et les redimensionner dans chacune des résolutions voulues. Par exemple pour vous pouvez vouloir des résolution pour mobile, tablette et desktop ou bien pour des tuiles de produit etc.",
+   "lgdesc": "Vous indiquez dans un .json le chemin du dossier où se trouvent les images ainsi que les résolutions que vous souhaitez. Le script va prendre les images une par une et les redimensionner dans chacune des résolutions voulues. Par exemple pour vous pouvez vouloir des résolutions pour mobile, tablette et desktop ou bien pour des tuiles de produit etc.",
    "smdesc": "Vous indiquez dans un .json le chemin du dossier …"
 }
