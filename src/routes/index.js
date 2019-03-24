@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs')
 const modelPost = require( path.join('../model/model-post') )
 const initialiseData = require( path.join('../model/model-initialise-data') )
 
-const sendEmail = require( path.join('../controller/sendEmail') )
+//const sendEmail = require( path.join('../controller/sendEmail') )
 const Manage = require( path.join('../controller/Manage') )
 
 const router = express.Router()
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
   let postsAndPageNb = modelPost.getPosts(req)
   if (!req.session.emailed) {
     req.session.emailed = true
-    sendEmail(req)
+    //sendEmail(req)
   }
   res.render('index', { 
     title: 'Portfolio Gabriel Brun', 
