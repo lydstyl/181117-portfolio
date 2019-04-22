@@ -4,8 +4,8 @@
    "postCreationDate": "2019-04-11T07:44:52.032Z",
    "name": "React.js  crash course",
    "description": "my description",
-   "imgsrc": "https://lydstyl.github.io/CV_WEB_DEV/portfolio/img/html.jpg",
-   "link": "https://github.com/lydstyl/190410-react-crash-course",
-   "lgdesc": "J'apprends les fondamentaux de React via cette vidéo : https://www.youtube.com/watch?v=Ke90Tje7VS0&t=5668s\r\n\r\nCeci dans le but de mieux comprendre la formation MERN stack et créer le Social Network.\r\n\r\nJSX\r\nRendering Lists\r\nConditional Rendering\r\nHandling Events\r\nUpdating the State\r\n\r\nPass Data\r\nRaise and Handle Events\r\nMultiple Components in Sync\r\nFunctional Components\r\nLifecycle Hooks",
+   "imgsrc": "img/21-1904-React.js_-sm.png",
+   "link": "https://react-crash-course-1904.herokuapp.com/",
+   "lgdesc": "J'apprends les fondamentaux de React via cette vidéo : https://www.youtube.com/watch?v=Ke90Tje7VS0&t=5668s\r\n\r\nCeci dans le but de mieux comprendre la formation MERN stack et créer le Social Network.\r\n\r\nJSX\r\nRendering Lists\r\nConditional Rendering\r\nHandling Events\r\nUpdating the State\r\n\r\nPass Data\r\nRaise and Handle Events\r\nMultiple Components in Sync\r\nFunctional Components\r\nLifecycle Hooks\r\n\r\nhttps://github.com/lydstyl/190410-react-crash-course",
    "smdesc": "J'apprends les fondamentaux de React via cette vi…"
 }
